@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mkshop-manager-service:war">
+    <output-path>$PROJECT_DIR$/mkshop-manager/mkshop-manager-service/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>mkshop-manager-service</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="mkshop-manager-service-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="mkshop-manager-service:war exploded" />
+    </root>
+  </artifact>
+</component>

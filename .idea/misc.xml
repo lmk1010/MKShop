@@ -41,6 +41,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/mkshop-front-web" />
     <file type="web" url="file://$PROJECT_DIR$/mkshop-manager-web" />
+    <file type="web" url="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-service" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
