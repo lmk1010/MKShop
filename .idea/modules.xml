@@ -6,6 +6,10 @@
       <module fileurl="file://$PROJECT_DIR$/mkshop-front-web/mkshop-front-web.iml" filepath="$PROJECT_DIR$/mkshop-front-web/mkshop-front-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager.iml" filepath="$PROJECT_DIR$/mkshop-manager/mkshop-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/mkshop-manager-dao.iml" filepath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/mkshop-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-interface/mkshop-manager-interface.iml" filepath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-interface/mkshop-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/mkshop-manager-pojo.iml" filepath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/mkshop-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-service/mkshop-manager-service.iml" filepath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-service/mkshop-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mkshop-manager-web/mkshop-manager-web.iml" filepath="$PROJECT_DIR$/mkshop-manager-web/mkshop-manager-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mkshop-parent/mkshop-parent.iml" filepath="$PROJECT_DIR$/mkshop-parent/mkshop-parent.iml" />
     </modules>
   </component>

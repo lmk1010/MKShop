@@ -40,6 +40,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/mkshop-front-web" />
+    <file type="web" url="file://$PROJECT_DIR$/mkshop-manager-web" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -47,6 +48,7 @@
         <option value="$PROJECT_DIR$/mkshop-parent/pom.xml" />
         <option value="$PROJECT_DIR$/mkshop-front-web/pom.xml" />
         <option value="$PROJECT_DIR$/mkshop-manager/pom.xml" />
+        <option value="$PROJECT_DIR$/mkshop-manager-web/pom.xml" />
       </list>
     </option>
   </component>

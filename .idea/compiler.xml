@@ -8,12 +8,20 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mkshop-front-web" />
         <module name="mkshop-manager-dao" />
+        <module name="mkshop-manager-interface" />
+        <module name="mkshop-manager-pojo" />
+        <module name="mkshop-manager-service" />
+        <module name="mkshop-manager-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mkshop-front-web" target="1.7" />
       <module name="mkshop-manager" target="1.5" />
       <module name="mkshop-manager-dao" target="1.5" />
+      <module name="mkshop-manager-interface" target="1.7" />
+      <module name="mkshop-manager-pojo" target="1.7" />
+      <module name="mkshop-manager-service" target="1.7" />
+      <module name="mkshop-manager-web" target="1.7" />
       <module name="mkshop-parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
