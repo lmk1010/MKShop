@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MKShop.iml" filepath="$PROJECT_DIR$/.idea/MKShop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/generator-map/generator-map.iml" filepath="$PROJECT_DIR$/generator-map/generator-map.iml" />
       <module fileurl="file://$PROJECT_DIR$/mkshop-front-web/mkshop-front-web.iml" filepath="$PROJECT_DIR$/mkshop-front-web/mkshop-front-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager.iml" filepath="$PROJECT_DIR$/mkshop-manager/mkshop-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/mkshop-manager-dao.iml" filepath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/mkshop-manager-dao.iml" />

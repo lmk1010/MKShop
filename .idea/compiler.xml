@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="generator-map" />
         <module name="mkshop-front-web" />
         <module name="mkshop-manager-dao" />
         <module name="mkshop-manager-interface" />
@@ -15,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="generator-map" target="1.5" />
       <module name="mkshop-front-web" target="1.7" />
       <module name="mkshop-manager" target="1.5" />
       <module name="mkshop-manager-dao" target="1.5" />
