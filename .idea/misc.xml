@@ -51,6 +51,7 @@
         <option value="$PROJECT_DIR$/mkshop-manager/pom.xml" />
         <option value="$PROJECT_DIR$/mkshop-manager-web/pom.xml" />
         <option value="$PROJECT_DIR$/generator-map/pom.xml" />
+        <option value="$PROJECT_DIR$/mkshop-common/pom.xml" />
       </list>
     </option>
   </component>

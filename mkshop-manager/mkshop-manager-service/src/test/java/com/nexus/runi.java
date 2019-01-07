@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = "classpath:spring-config.xml")
 public class runi {
 
-
     @Autowired
     private UserService userService;
 
