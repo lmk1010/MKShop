@@ -29,5 +29,10 @@ public class UserServiceImpl implements UserService {
         return tbUserMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public TbUser selectUserByName(String username) {
+        return tbUserMapper.selectByUserName(username);
+    }
+
 
 }

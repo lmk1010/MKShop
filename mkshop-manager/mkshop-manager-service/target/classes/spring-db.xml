@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
     <!--配置文件扫描-->
-    <context:property-placeholder location="classpath:db.properties"/>
+    <context:property-placeholder location="classpath:db.properties,classpath:redis.properties"/>
 
     <!-- 自动扫描 -->
     <context:component-scan base-package="com.nexus.manager">

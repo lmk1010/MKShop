@@ -1,6 +1,7 @@
 package com.nexus.manager.mapper;
 
 import com.nexus.manager.pojo.TbUser;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -16,4 +17,7 @@ public interface TbUserMapper {
     int updateByPrimaryKeySelective(TbUser record);
 
     int updateByPrimaryKey(TbUser record);
+
+    /** 自定义**/
+    TbUser selectByUserName(@Param("username") String username);
 }

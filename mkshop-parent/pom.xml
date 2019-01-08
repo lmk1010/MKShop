@@ -35,6 +35,8 @@
         <jedis.version>2.9.0</jedis.version>
         <redis.spring.version>2.1.2.RELEASE</redis.spring.version>
 
+        <shiro.version>1.4.0</shiro.version>
+
     </properties>
 
     <dependencyManagement>
@@ -246,6 +248,13 @@
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
             </dependency>
+            <!--整合shiro-->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-all</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

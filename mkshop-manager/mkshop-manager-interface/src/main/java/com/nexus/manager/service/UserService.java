@@ -12,4 +12,6 @@ public interface UserService {
 
     public TbUser select_user(Integer id);
 
+    public TbUser selectUserByName(String username);
+
 }
