@@ -11,9 +11,11 @@
        					   http://www.springframework.org/schema/context
        					   http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <import resource="spring-redis.xml"/>
+    <!--<import resource="spring-redis.xml"/>-->
     <import resource="spring-db.xml"/>
     <import resource="spring-tx.xml"/>
+
+    <import resource="spring-dubbo.xml"/>
 
 
 </beans>

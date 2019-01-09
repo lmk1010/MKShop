@@ -1,8 +1,9 @@
 package com.nexus.manager.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbPayinfo {
+public class TbPayinfo implements Serializable {
     private Integer id;
 
     private Integer orderNum;

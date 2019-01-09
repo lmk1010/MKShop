@@ -1,8 +1,9 @@
 package com.nexus.manager.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbCategory {
+public class TbCategory implements Serializable {
     private Integer id;
 
     private Integer parentId;

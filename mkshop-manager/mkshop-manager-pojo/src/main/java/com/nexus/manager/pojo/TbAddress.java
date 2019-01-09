@@ -1,8 +1,10 @@
 package com.nexus.manager.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbAddress {
+public class TbAddress implements Serializable {
+
     private Integer id;
 
     private Integer userId;

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--配置Redis数据源-->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxActive}"/>
+        <property name="maxIdle"  value="${redis.pool.maxIdle}"/>
+        <property name="maxWaitMillis" value="${redis.pool.maxWait}"/>
+        <property name="minIdle" value="${redis.pool.minIdle}"/>
+        <property name="testOnBorrow" value="${redis.pool.borrow}"/>
+        <property name="testOnReturn" value="${redis.pool.return}"/>
+    </bean>
+
+    <!--redis资源池-->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" depends-on="jedisPoolConfig">
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+        <constructor-arg name="host" value="192.168.50.39"/>
+        <constructor-arg name="port" value="6379"/>
+        <constructor-arg name="timeout" value="2000"/>
+        <constructor-arg name="password" value="redislmk"/>
+    </bean>
+
+
+
+
+
+
+
+</beans>

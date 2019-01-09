@@ -1,8 +1,9 @@
 package com.nexus.manager.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbCart {
+public class TbCart implements Serializable {
     private Integer id;
 
     private Integer userId;

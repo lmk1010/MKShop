@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 
-@Service
+@Service("userService")
 @Transactional
 @Slf4j
 public class UserServiceImpl implements UserService {
+
 
     @Autowired
     private TbUserMapper tbUserMapper;

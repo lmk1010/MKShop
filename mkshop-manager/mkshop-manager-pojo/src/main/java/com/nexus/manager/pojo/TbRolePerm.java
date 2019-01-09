@@ -1,6 +1,9 @@
 package com.nexus.manager.pojo;
 
-public class TbRolePerm {
+import javax.sql.rowset.serial.SerialArray;
+import java.io.Serializable;
+
+public class TbRolePerm implements Serializable {
     private Integer id;
 
     private Integer roleId;

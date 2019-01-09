@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/tx
+       					   http://www.springframework.org/schema/tx/spring-tx.xsd
+       					   http://www.springframework.org/schema/aop
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context
+       					   http://www.springframework.org/schema/context/spring-context.xsd
+       					   http://code.alibabatech.com/schema/dubbo
+       					   http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--提供服务的名称-->
+    <dubbo:application name="MKShopService"/>
+    <!--注册广播中心-->
+    <dubbo:registry protocol="zookeeper" address="192.168.50.10:2181"/>
+
+    <!--使用dubbo协议 端口号为20800-->
+    <dubbo:protocol name="dubbo" port="20800"/>
+    <!--需要暴露出来的服务-->
+    <dubbo:service interface="com.nexus.manager.service.UserService" ref="userService" timeout="10000"/>
+
+
+
+</beans>

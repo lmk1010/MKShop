@@ -4,8 +4,8 @@ import com.nexus.manager.pojo.TbUser;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface TbUserMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(TbUser record);

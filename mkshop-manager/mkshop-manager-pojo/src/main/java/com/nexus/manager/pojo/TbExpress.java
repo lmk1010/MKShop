@@ -1,8 +1,9 @@
 package com.nexus.manager.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbExpress {
+public class TbExpress implements Serializable {
     private Integer id;
 
     private Integer expressCode;
