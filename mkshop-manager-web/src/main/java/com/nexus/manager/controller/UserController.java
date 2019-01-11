@@ -2,11 +2,18 @@ package com.nexus.manager.controller;
 
 
 import com.nexus.manager.pojo.TbUser;
+import com.nexus.manager.service.DemoService;
 import com.nexus.manager.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.UnauthenticatedException;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +31,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private DemoService demoService;
+
     /**
      *功能描述
      * @Author liumingkang
@@ -35,7 +45,7 @@ public class UserController {
     @RequestMapping(value = "getdemo",method = RequestMethod.GET)
     @ResponseBody
     public String getDemo(){
-        return "hello springMVC";
+        return demoService.hello("hello springmvc");
     }
 
     /**
@@ -52,22 +62,24 @@ public class UserController {
                                        @RequestParam("password") String password,
                                        HttpSession session){
         Map<String,Integer> result = new HashMap<>();
-        String auth = "lmk";
-        String pass = "1010";
 
-        TbUser tbUser = userService.selectUserByName(username);
-        result.put("成功", 200);
-        /*
-        if (!username.equals(auth)){
-            result.put("无此用户", 301);
+        Subject subject = SecurityUtils.getSubject();
+
+        String passMD5 = DigestUtils.md5DigestAsHex(password.getBytes());
+
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username,passMD5);
+
+        try{
+            subject.login(usernamePasswordToken);
+            result.put("登陆成功", 200);
+        }catch (UnauthenticatedException e){
+            result.put("密码错误",401);
+        }catch (UnknownAccountException e){
+            result.put("未知账户",402);
+        }catch (Exception e){
+            result.put("认证失败",403);
         }
 
-        if (!password.equals(password)){
-            result.put("密码错误",302);
-        }else{
-            result.put("登陆成功", 200);
-            session.setAttribute("currentUser", username);
-        }*/
         return result;
 
     }

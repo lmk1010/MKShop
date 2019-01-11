@@ -10,24 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.net.InetAddress;
+
 /**
  * Unit test for simple App.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config.xml")
 public class AppTest 
 {
 
-    @Autowired
-    private UserService userService;
-    /**
-     * Rigorous Test :-)
-     */
+
     @Test
-    public void te()
+    public void te() throws Exception
     {
 
-        TbUser t1 = userService.select_user(1);
-        System.out.println(t1.toString());
+        String address = InetAddress.getLocalHost().getHostAddress().toString();
+        System.err.println(address);
     }
 }

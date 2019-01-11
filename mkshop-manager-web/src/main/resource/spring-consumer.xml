@@ -13,28 +13,11 @@
  http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 
-    <!--扫描当前Controller-->
-    <context:component-scan base-package="com.nexus.manager">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>
+    <dubbo:application name="MKShopManagerWeb"/>
 
-    <!--开启自动注解-->
-    <mvc:annotation-driven/>
+    <dubbo:registry protocol="zookeeper" address="192.168.50.10:2181"/>
 
-    <!--自动处理静态资源-->
-    <mvc:default-servlet-handler/>
-
-    <!--配置试图解析器 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB_INF/jsp" />
-        <property name="suffix" value=".jsp"/>
-    </bean>
-
-    <import resource="spring-shiro.xml"/>
-
-    <import resource="spring-consumer.xml"/>
-
-
-
+    <dubbo:reference interface="com.nexus.manager.service.UserService" id="userService"/>
+    <dubbo:reference interface="com.nexus.manager.service.DemoService" id="demoService"/>
 
 </beans>

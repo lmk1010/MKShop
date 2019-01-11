@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
-
     @Autowired
     private TbUserMapper tbUserMapper;
 
@@ -32,6 +31,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public TbUser selectUserByName(String username) {
         return tbUserMapper.selectByUserName(username);
+    }
+
+    @Override
+    public Integer updateUser(TbUser tbUser) {
+        return tbUserMapper.updateByPrimaryKeySelective(tbUser);
     }
 
 

@@ -4,12 +4,16 @@ import com.nexus.manager.pojo.TbUser;
 import com.nexus.manager.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthenticatingRealm;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * @ClassName MyRealm
@@ -26,7 +30,16 @@ public class MyRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        return null;
+        //授权过程
+        //获取用户凭证中的username
+        String username = principalCollection.getPrimaryPrincipal().toString();
+        //创建用户授权凭证
+        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        //取DB查询该用户的角色列表和权限
+        //并且进行授权
+        //authorizationInfo.setRoles();
+        //authorizationInfo.setStringPermissions();
+        return authorizationInfo;
     }
 
     @Override
@@ -34,7 +47,6 @@ public class MyRealm extends AuthorizingRealm {
 
         //从shiro获取凭证
         String username = (String) authenticationToken.getPrincipal();
-        String password = (String) authenticationToken.getCredentials();
 
         //从DB获取该用户对象
         TbUser loginUser = userService.selectUserByName(username);
@@ -49,16 +61,11 @@ public class MyRealm extends AuthorizingRealm {
             throw new LockedAccountException();
         }
 
-        if (password.equals(loginUser.getPassword())){
-            SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                     loginUser.getUsername(), //用户名
                     loginUser.getPassword(), //密码
                     getName()  //realm name
             );
-        }
-
-
-
-        return null;
+        return authenticationInfo;
     }
 }

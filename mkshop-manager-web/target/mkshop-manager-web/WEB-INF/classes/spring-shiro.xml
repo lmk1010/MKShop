@@ -13,10 +13,35 @@
        					   http://www.springframework.org/schema/context
        					   http://www.springframework.org/schema/context/spring-context.xsd">
 
-     <bean id="myRealm" class="com.nexus.manager.shiro.MyRealm">
+     <!--shiro的数据源realm-->
+     <bean id="myRealm" class="com.nexus.manager.shiro.MyRealm"/>
+     <!--shiro安全管理器-->
+     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+          <!--放置数据源Realm-->
+          <property name="realm" ref="myRealm"/>
      </bean>
-
-
-
+     <!--配置shiro的生命周期-->
+     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+     <bean id="shiroFilter" class="com.nexus.manager.shiro.MyShiroFilter">
+          <property name="securityManager" ref="securityManager"/>
+          <!--登陆页面地址-->
+          <property name="loginUrl" value="/"/>
+          <!--登陆之后跳转的地址-->
+          <property name="successUrl" value="/"/>
+          <!--没通过登陆之后跳转地址-->
+          <property name="unauthorizedUrl" value=""/>
+          <!--定义filter-->
+          <!--
+          <property name="filters">
+          </property>
+          -->
+          <!--过滤URL控制-->
+          <property name="filterChainDefinitions">
+                    <value>
+                         /user/login=anon
+                         /user/getdemo=anon
+                    </value>
+          </property>
+     </bean>
 
 </beans>

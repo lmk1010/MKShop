@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.DigestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config.xml")
@@ -20,7 +21,10 @@ public class runi {
     public void rer(){
 
         TbUser tbUser = userService.select_user(1);
-        System.err.println(tbUser.toString());
+        String s = DigestUtils.md5DigestAsHex(tbUser.getPassword().getBytes());
+        tbUser.setPassword(s);
+        userService.updateUser(tbUser);
+
     }
 
 

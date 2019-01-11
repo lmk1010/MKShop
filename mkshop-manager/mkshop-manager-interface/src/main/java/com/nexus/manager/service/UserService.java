@@ -14,4 +14,6 @@ public interface UserService {
 
     public TbUser selectUserByName(String username);
 
+    public Integer updateUser(TbUser tbUser);
+
 }

@@ -30,13 +30,9 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <import resource="spring-shiro.xml"/>
 
-    <dubbo:application name="MKShopManagerWeb"/>
-
-    <dubbo:registry protocol="zookeeper" address="192.168.50.10:2181"/>
-
-    <dubbo:reference interface="com.nexus.manager.service.UserService" id="userService"/>
-
+    <import resource="spring-consumer.xml"/>
 
 
 
