@@ -77,6 +77,7 @@ public class UserController {
         }catch (UnknownAccountException e){
             result.put("未知账户",402);
         }catch (Exception e){
+            e.printStackTrace();
             result.put("认证失败",403);
         }
 
