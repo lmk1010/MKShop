@@ -109,7 +109,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mkshop-manager-web/src/main/webapp/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
+            <state relative-caret-position="102">
               <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
             </state>
           </provider>
@@ -973,13 +973,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72791000" />
+    <option name="totallyTimeSpent" value="73061000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="804" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4967462" visible="true" weight="0.32260373" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4967462" visible="true" weight="0.32260373" />
       <window_info id="Structure" order="1" weight="0.24964234" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -991,7 +990,7 @@
       <window_info id="Favorites" order="9" sideWeight="0.5032538" side_tool="true" weight="0.30615166" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286517" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49356222" visible="true" weight="0.2963483" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49356222" weight="0.2963483" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4985694" weight="0.3988764" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1001,7 +1000,7 @@
       <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.6351931" weight="0.3286517" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3286517" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49785408" weight="0.3272472" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.49785408" visible="true" weight="0.3272472" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="14" weight="0.3286517" />
       <window_info anchor="bottom" id="Spring" order="15" />
@@ -1534,7 +1533,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mkshop-manager-web/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
+        <state relative-caret-position="102">
           <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
         </state>
       </provider>
