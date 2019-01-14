@@ -1,8 +1,6 @@
 package com.nexus.generator.pojo;
 
-import java.util.Date;
-
-public class tb_user {
+public class TbMember {
     private Integer id;
 
     private String username;
@@ -17,17 +15,11 @@ public class tb_user {
 
     private String address;
 
-    private Integer status;
-
     private String description;
 
-    private Integer roleId;
+    private String imgurl;
 
-    private Date createtime;
-
-    private Date updatetime;
-
-    public tb_user(Integer id, String username, String password, String email, String phonenumber, String sex, String address, Integer status, String description, Integer roleId, Date createtime, Date updatetime) {
+    public TbMember(Integer id, String username, String password, String email, String phonenumber, String sex, String address, String description, String imgurl) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -35,14 +27,11 @@ public class tb_user {
         this.phonenumber = phonenumber;
         this.sex = sex;
         this.address = address;
-        this.status = status;
         this.description = description;
-        this.roleId = roleId;
-        this.createtime = createtime;
-        this.updatetime = updatetime;
+        this.imgurl = imgurl;
     }
 
-    public tb_user() {
+    public TbMember() {
         super();
     }
 
@@ -102,14 +91,6 @@ public class tb_user {
         this.address = address == null ? null : address.trim();
     }
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -118,27 +99,11 @@ public class tb_user {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public String getImgurl() {
+        return imgurl;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
-
-    public Date getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
-
-    public Date getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl == null ? null : imgurl.trim();
     }
 }
