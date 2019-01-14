@@ -25,6 +25,7 @@
         <commons-net.version>3.3</commons-net.version>
         <commons-logging.version>1.2</commons-logging.version>
         <jackson.version>2.9.1</jackson.version>
+        <jackson.ma.version>1.9.13</jackson.ma.version>
         <httpclient.version>4.5.3</httpclient.version>
         <slf4j.version>1.8.0-alpha2</slf4j.version>
         <jstl.version>1.2</jstl.version>
@@ -38,6 +39,7 @@
         <shiro.version>1.4.0</shiro.version>
         <dubbo.version>2.6.0</dubbo.version>
         <zookeeper.version>3.4.6</zookeeper.version>
+        <swaggar2.version>2.6.1</swaggar2.version>
     </properties>
 
     <dependencyManagement>
@@ -191,6 +193,11 @@
                 <artifactId>jackson-annotations</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${jackson.ma.version}</version>
+            </dependency>
             <!-- Httpclient -->
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
@@ -265,6 +272,17 @@
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
                 <version>${zookeeper.version}</version>
+            </dependency>
+            <!--Swagger2依赖-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swaggar2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swaggar2.version}</version>
             </dependency>
 
         </dependencies>
