@@ -9,7 +9,9 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.UnauthenticatedException;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.apache.zookeeper.data.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -93,6 +95,34 @@ public class UserController {
         result.put("注销成功", 200);
         return result;
     }
+
+    @RequestMapping(value = "shirologout",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String,Integer> toShiroLogout(){
+        Map<String,Integer> result = new HashMap<>();
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        result.put("注销成功", 200);
+        return result;
+    }
+
+    @RequestMapping(value = "getOnlineStatus",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String,String> getStatus(HttpSession session){
+        Map<String,String> result = new HashMap<>();
+        Subject subject = SecurityUtils.getSubject();
+        Session session1 = subject.getSession();
+        result.put("sessionid", session.getId());
+        boolean authenticated = subject.isAuthenticated();
+        if (authenticated==true){
+            result.put("loginStatus", "已登陆");
+        }else{
+            result.put("loginStatus", "未登陆");
+        }
+        return result;
+    }
+
+
 
 
 }

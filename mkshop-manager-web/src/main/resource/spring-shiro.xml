@@ -19,6 +19,7 @@
      <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
           <!--放置数据源Realm-->
           <property name="realm" ref="myRealm"/>
+          <property name="sessionManager" ref=""/>
      </bean>
      <!--配置shiro的生命周期-->
      <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>

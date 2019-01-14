@@ -25,6 +25,12 @@
     from tb_address
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultType="com.nexus.manager.pojo.TbAddress">
+    select
+    <include refid="Base_Column_List" />
+    from tb_address
+    where user_id = #{userId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tb_address
     where id = #{id,jdbcType=INTEGER}
@@ -152,4 +158,6 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
 </mapper>
