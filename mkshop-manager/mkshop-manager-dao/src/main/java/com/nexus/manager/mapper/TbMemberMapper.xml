@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nexus.generator.mapper.TbMemberMapper" >
-  <resultMap id="BaseResultMap" type="com.nexus.generator.pojo.TbMember" >
+<mapper namespace="com.nexus.manager.mapper.TbMemberMapper" >
+  <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbMember" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -12,10 +12,13 @@
       <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="imgurl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, password, email, phonenumber, sex, address, description, imgurl
+    id, username, password, email, phonenumber, sex, address, description, imgurl, createtime, 
+    updatetime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -27,17 +30,17 @@
     delete from tb_member
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.nexus.generator.pojo.TbMember" >
+  <insert id="insert" parameterType="com.nexus.manager.pojo.TbMember" >
     insert into tb_member (id, username, password, 
       email, phonenumber, sex, 
-      address, description, imgurl
-      )
+      address, description, imgurl, 
+      createtime, updatetime)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{imgurl,jdbcType=VARCHAR}
-      )
+      #{address,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{imgurl,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.nexus.generator.pojo.TbMember" >
+  <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbMember" >
     insert into tb_member
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -66,6 +69,12 @@
       </if>
       <if test="imgurl != null" >
         imgurl,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -96,9 +105,15 @@
       <if test="imgurl != null" >
         #{imgurl,jdbcType=VARCHAR},
       </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.nexus.generator.pojo.TbMember" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.nexus.manager.pojo.TbMember" >
     update tb_member
     <set >
       <if test="username != null" >
@@ -125,10 +140,16 @@
       <if test="imgurl != null" >
         imgurl = #{imgurl,jdbcType=VARCHAR},
       </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.nexus.generator.pojo.TbMember" >
+  <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbMember" >
     update tb_member
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -137,7 +158,9 @@
       sex = #{sex,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      imgurl = #{imgurl,jdbcType=VARCHAR}
+      imgurl = #{imgurl,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

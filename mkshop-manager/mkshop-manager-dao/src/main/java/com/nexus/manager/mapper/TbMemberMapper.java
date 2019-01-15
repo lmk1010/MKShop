@@ -1,6 +1,6 @@
-package com.nexus.generator.mapper;
+package com.nexus.manager.mapper;
 
-import com.nexus.generator.pojo.TbMember;
+import com.nexus.manager.pojo.TbMember;
 
 public interface TbMemberMapper {
     int deleteByPrimaryKey(Integer id);
