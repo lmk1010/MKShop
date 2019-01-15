@@ -24,6 +24,7 @@ import sun.tools.jstat.Token;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.UUID;
 
@@ -37,12 +38,12 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/member/")
 @Api(value = "前台用户接口",description = "前台用户登录，注册，修改用户信息")
-public class UseController {
+public class MemberController {
 
     @Autowired
     private MemberService memberService;
 
-    @RequestMapping(value = "hello",method = RequestMethod.GET)
+    @RequestMapping(value = "hello",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
     @ApiOperation(httpMethod = "GET",value = "测试demo",
             produces = "application/json;charset=UTF-8",notes = "测试接口demo 同时测试dubbo服务是否正常")
     public String hello(){
@@ -50,8 +51,8 @@ public class UseController {
     }
 
 
-    @RequestMapping(value = "login",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
-    @ApiOperation(httpMethod = "GET",value = "用户登录",
+    @RequestMapping(value = "login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ApiOperation(httpMethod = "POST",value = "用户登录",
             produces = "application/json;charset=UTF-8",notes = "对于用户登录进行验证")
     public ServerResponse toLogin(@RequestParam("username") String username,
                                   @RequestParam("password") String password,
@@ -60,25 +61,56 @@ public class UseController {
             return ServerResponse.createByErrorCode("参数错误", ResponseCode.ILLEGA_ARGUMENT.getCode());
         }
         ServerResponse serverResponse = memberService.loginMK(username, password);
-        if(serverResponse.isSuccess()){
-            HttpSession session = request.getSession();
-            session.setAttribute(Constant.CURRENT_USER,serverResponse.getData());
-        }
+
         return serverResponse;
     }
 
+    @RequestMapping(value = "refresh_token",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ApiOperation(httpMethod = "POST",value = "刷新token",
+            produces = "application/json;charset=UTF-8",notes = "刷新token")
+    public ServerResponse refreshToken(HttpServletRequest request,
+                                     @RequestParam("token") String token){
 
-    @RequestMapping(value = "send_code",method = RequestMethod.POST)
+        return memberService.refreshToken(token);
+    }
+
+    @RequestMapping(value = "check_token",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ApiOperation(httpMethod = "POST",value = "检查token是否存活",
+            produces = "application/json;charset=UTF-8",notes = "检测token是否存活")
+    public ServerResponse checkToken(HttpServletRequest request,
+                             @RequestParam("token") String token){
+
+       return memberService.checkToken(token);
+    }
+
+    @RequestMapping(value = "logout",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ApiOperation(httpMethod = "POST",value = "退出登陆",
+            produces = "application/json;charset=UTF-8",notes = "退出登陆，销毁token")
+    public ServerResponse logout(HttpServletRequest request,
+                                     @RequestParam("token") String token){
+        return memberService.logoutMK(token);
+    }
+
+    @RequestMapping(value = "register_phone",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ApiOperation(httpMethod = "POST",value = "注册新用户-手机方式",
+            produces = "application/json;charset=UTF-8",notes = "注册用户-手机方式")
+    public ServerResponse registerByPhone(HttpServletRequest request,
+                                          @RequestParam("phonenumber") String phonenumber){
+        return memberService.registerByPhone(phonenumber);
+    }
+
+
+    @RequestMapping(value = "send_code",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     @ApiOperation(httpMethod = "POST",value = "发送验证码",
-            produces = "application/json;charset=UTF-8",notes = "用于忘记密码之前的手机验证")
-    public ServerResponse toVaildPhoneNumber(@RequestParam("phonenumber") String phonenumber){
-        //给该手机发送验证码
-        ServerResponse serverResponse =
-                memberService.checkPhoneVaild(phonenumber);
+            produces = "application/json;charset=UTF-8",notes = "用于忘记密码之前的手机验证和注册")
+    public ServerResponse toVaildPhoneNumber(@RequestParam("phonenumber") String phonenumber,
+                                             @RequestParam("s_mode") Integer s_mode){
+        ServerResponse serverResponse;
+        serverResponse = memberService.sendMessageCode(phonenumber,s_mode);
         return serverResponse;
     }
 
-    @RequestMapping(value = "vaild_code",method = RequestMethod.POST)
+    @RequestMapping(value = "vaild_code",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     @ApiOperation(httpMethod = "POST",value = "验证手机验证码",
             produces = "application/json;charset=UTF-8",notes = "用于忘记密码之前的用户输入的验证码")
     public ServerResponse toVaildCode(@RequestParam("token") String token,
@@ -90,26 +122,13 @@ public class UseController {
 
 
     @RequestMapping(value = "forget_password",method = RequestMethod.POST)
-    @ApiOperation(httpMethod = "POST",value = "测试demo",
+    @ApiOperation(httpMethod = "POST",value = "修改密码",
             produces = "application/json;charset=UTF-8",notes = "用于忘记密码 使用手机验证码进行验证修改密码")
     public ServerResponse toForgetPassword(@RequestParam("username") String username,
                                    @RequestParam("passwordNew") String passwordNew,
                                    @RequestParam("forgetToken") String forgetToken){
         return memberService.forgetPass(username, passwordNew, forgetToken);
     }
-
-
-    @RequestMapping(value = "checkSession",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
-    @ApiOperation(httpMethod = "GET",value = "检查session",
-            produces = "application/json;charset=UTF-8",notes = "测试接口demo 同时测试dubbo服务是否正常")
-    public String checkSession(HttpSession session){
-        TbMember tbMember = (TbMember) session.getAttribute(Constant.CURRENT_USER);
-        if(tbMember==null){
-            return "用户不存在";
-        }
-        return  "已登陆 sessionid="+session.getId();
-    }
-
 
 
 

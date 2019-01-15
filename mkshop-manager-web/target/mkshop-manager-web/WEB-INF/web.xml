@@ -9,7 +9,7 @@
   <display-name>MKShop Welcome</display-name>
 
   <servlet>
-    <servlet-name>springMVC</servlet-name>
+    <servlet-name>springmvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
@@ -19,7 +19,7 @@
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>springMVC</servlet-name>
+    <servlet-name>springmvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 

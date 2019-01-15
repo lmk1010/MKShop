@@ -39,6 +39,7 @@
     </properties>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/mkshop-front" />
     <file type="web" url="file://$PROJECT_DIR$/mkshop-front-web" />
     <file type="web" url="file://$PROJECT_DIR$/mkshop-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-service" />
@@ -52,6 +53,7 @@
         <option value="$PROJECT_DIR$/mkshop-manager-web/pom.xml" />
         <option value="$PROJECT_DIR$/generator-map/pom.xml" />
         <option value="$PROJECT_DIR$/mkshop-common/pom.xml" />
+        <option value="$PROJECT_DIR$/mkshop-front/pom.xml" />
       </list>
     </option>
   </component>

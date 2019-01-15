@@ -27,5 +27,4 @@
     <dubbo:service timeout="1200000" interface="com.nexus.manager.service.UserService" ref="userService"/>
     <dubbo:service interface="com.nexus.manager.service.DemoService" ref="demoService"/>
 
-
 </beans>

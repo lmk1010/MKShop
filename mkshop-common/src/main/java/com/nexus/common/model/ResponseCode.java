@@ -13,7 +13,9 @@ public enum ResponseCode {
     SUCCESS(200,"成功"),
     NEED_LOGIN(301,"需要登陆"),
     ILLEGA_ARGUMENT(302,"错误的参数"),
-    ERROR(500,"失败");
+    ERROR(500,"失败"),
+    NO_USER(403,"没有此用户"),
+    EXIST_USER(402,"已存在的用户");
 
     private final int code;
     private final String status;

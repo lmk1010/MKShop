@@ -11,6 +11,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mkshop-front</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>mkshop-front-service</module>
+        <module>mkshop-front-interface</module>
+    </modules>
 
 
 </project>

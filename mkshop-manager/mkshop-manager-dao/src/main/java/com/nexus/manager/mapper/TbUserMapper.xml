@@ -27,6 +27,12 @@
     from tb_user
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_user
+    where username= #{username}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_user
     where id = #{id,jdbcType=BIGINT}
@@ -115,10 +121,10 @@
         #{roleId,jdbcType=BIGINT},
       </if>
       <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updatetime != null" >
-        #{updatetime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -156,7 +162,7 @@
         createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="updatetime != null" >
-        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+        updatetime = now(),
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -173,7 +179,7 @@
       description = #{description,jdbcType=VARCHAR},
       role_id = #{roleId,jdbcType=BIGINT},
       createtime = #{createtime,jdbcType=TIMESTAMP},
-      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+      updatetime = now()
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

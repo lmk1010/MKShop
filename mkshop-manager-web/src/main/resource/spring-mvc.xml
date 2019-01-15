@@ -24,12 +24,6 @@
     <!--自动处理静态资源-->
     <mvc:default-servlet-handler/>
 
-    <!--配置试图解析器 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB_INF/jsp" />
-        <property name="suffix" value=".jsp"/>
-    </bean>
-
     <import resource="spring-shiro.xml"/>
 
     <import resource="spring-consumer.xml"/>

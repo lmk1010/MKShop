@@ -1,6 +1,7 @@
 package com.nexus.manager.controller;
 
 
+import com.nexus.common.model.ServerResponse;
 import com.nexus.manager.pojo.TbUser;
 import com.nexus.manager.service.DemoService;
 import com.nexus.manager.service.UserService;
@@ -21,12 +22,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/user/")
+@RequestMapping("/mkshop/manager/user/")
 @Slf4j
 public class UserController {
 
@@ -60,31 +62,27 @@ public class UserController {
      */
     @RequestMapping(value = "login",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Integer> toLogin(@RequestParam("username") String username,
-                                       @RequestParam("password") String password,
-                                       HttpSession session){
-        Map<String,Integer> result = new HashMap<>();
-
+    public ServerResponse toLogin(@RequestParam("username") String username,
+                                  @RequestParam("password") String password,
+                                  HttpSession session){
+        //从安全管理器拿到subject
         Subject subject = SecurityUtils.getSubject();
-
+        //对密码进行MD5加密
         String passMD5 = DigestUtils.md5DigestAsHex(password.getBytes());
-
+        //创建token
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username,passMD5);
-
+        //进行登陆
         try{
             subject.login(usernamePasswordToken);
-            result.put("登陆成功", 200);
+            return ServerResponse.createBySuccessMsg("登陆成功");
         }catch (UnauthenticatedException e){
-            result.put("密码错误",401);
+            return ServerResponse.createByErrorMsg("密码错误");
         }catch (UnknownAccountException e){
-            result.put("未知账户",402);
+            return ServerResponse.createByErrorMsg("账户不存在");
         }catch (Exception e){
             e.printStackTrace();
-            result.put("认证失败",403);
+            return ServerResponse.createByErrorMsg("认证失败");
         }
-
-        return result;
-
     }
 
     @RequestMapping(value = "logout",method = RequestMethod.GET)
@@ -108,11 +106,11 @@ public class UserController {
 
     @RequestMapping(value = "getOnlineStatus",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,String> getStatus(HttpSession session){
+    public Map<String,String> getStatus(HttpServletRequest request){
         Map<String,String> result = new HashMap<>();
         Subject subject = SecurityUtils.getSubject();
         Session session1 = subject.getSession();
-        result.put("sessionid", session.getId());
+        result.put("sessionid", session1.getId().toString());
         boolean authenticated = subject.isAuthenticated();
         if (authenticated==true){
             result.put("loginStatus", "已登陆");

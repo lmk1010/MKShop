@@ -1,4 +1,4 @@
-package com.lmk.swagger;
+package com.nexus.front.swaggar2;
 
 
 import io.swagger.annotations.ApiOperation;
@@ -41,8 +41,8 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("LMK MMall Api Documentation")
-                .description("MMALL商城API接口文档")
+                .title("MKShop Api Documentation")
+                .description("MKShop商城API接口文档")
                 .termsOfServiceUrl("http://github.io.lmk1010")
                 .contact(new Contact("LiuMingKang", "http://github.io.lmk1010", "lmkbnb0@gmail.com"))
                 .version("1.0.0")
