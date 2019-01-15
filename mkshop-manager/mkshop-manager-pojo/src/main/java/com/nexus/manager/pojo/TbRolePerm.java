@@ -1,16 +1,13 @@
 package com.nexus.manager.pojo;
 
-import javax.sql.rowset.serial.SerialArray;
-import java.io.Serializable;
+public class TbRolePerm {
+    private Long id;
 
-public class TbRolePerm implements Serializable {
-    private Integer id;
+    private Long roleId;
 
-    private Integer roleId;
+    private Long permId;
 
-    private Integer permId;
-
-    public TbRolePerm(Integer id, Integer roleId, Integer permId) {
+    public TbRolePerm(Long id, Long roleId, Long permId) {
         this.id = id;
         this.roleId = roleId;
         this.permId = permId;
@@ -20,27 +17,27 @@ public class TbRolePerm implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
-    public Integer getPermId() {
+    public Long getPermId() {
         return permId;
     }
 
-    public void setPermId(Integer permId) {
+    public void setPermId(Long permId) {
         this.permId = permId;
     }
 }

@@ -1,10 +1,9 @@
 package com.nexus.manager.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TbExpress implements Serializable {
-    private Integer id;
+public class TbExpress {
+    private Long id;
 
     private Integer expressCode;
 
@@ -14,7 +13,7 @@ public class TbExpress implements Serializable {
 
     private Date updateTime;
 
-    public TbExpress(Integer id, Integer expressCode, String expressName, Date createTime, Date updateTime) {
+    public TbExpress(Long id, Integer expressCode, String expressName, Date createTime, Date updateTime) {
         this.id = id;
         this.expressCode = expressCode;
         this.expressName = expressName;
@@ -26,11 +25,11 @@ public class TbExpress implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

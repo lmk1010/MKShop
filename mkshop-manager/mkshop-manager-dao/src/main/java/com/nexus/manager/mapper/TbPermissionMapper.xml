@@ -3,7 +3,7 @@
 <mapper namespace="com.nexus.manager.mapper.TbPermissionMapper" >
   <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbPermission" >
     <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="permission" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -13,20 +13,20 @@
   <sql id="Base_Column_List" >
     id, url, name, permission, available
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from tb_permission
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_permission
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.nexus.manager.pojo.TbPermission" >
     insert into tb_permission (id, url, name, 
       permission, available)
-    values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{url,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{permission,jdbcType=VARCHAR}, #{available,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbPermission" >
@@ -50,7 +50,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
@@ -82,7 +82,7 @@
         available = #{available,jdbcType=BIT},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbPermission" >
     update tb_permission
@@ -90,6 +90,6 @@
       name = #{name,jdbcType=VARCHAR},
       permission = #{permission,jdbcType=VARCHAR},
       available = #{available,jdbcType=BIT}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

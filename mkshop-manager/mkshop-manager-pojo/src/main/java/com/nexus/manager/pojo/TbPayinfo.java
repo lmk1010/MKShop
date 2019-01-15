@@ -1,14 +1,13 @@
 package com.nexus.manager.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TbPayinfo implements Serializable {
-    private Integer id;
+public class TbPayinfo {
+    private Long id;
 
-    private Integer orderNum;
+    private Long orderNum;
 
-    private Integer userId;
+    private Long userId;
 
     private Integer paymentType;
 
@@ -20,7 +19,7 @@ public class TbPayinfo implements Serializable {
 
     private Date updateTime;
 
-    public TbPayinfo(Integer id, Integer orderNum, Integer userId, Integer paymentType, Integer paymentNumber, Integer paymentStatus, Date createTime, Date updateTime) {
+    public TbPayinfo(Long id, Long orderNum, Long userId, Integer paymentType, Integer paymentNumber, Integer paymentStatus, Date createTime, Date updateTime) {
         this.id = id;
         this.orderNum = orderNum;
         this.userId = userId;
@@ -35,27 +34,27 @@ public class TbPayinfo implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getOrderNum() {
+    public Long getOrderNum() {
         return orderNum;
     }
 
-    public void setOrderNum(Integer orderNum) {
+    public void setOrderNum(Long orderNum) {
         this.orderNum = orderNum;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

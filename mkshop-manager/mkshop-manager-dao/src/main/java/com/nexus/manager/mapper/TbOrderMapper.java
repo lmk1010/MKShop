@@ -3,13 +3,13 @@ package com.nexus.manager.mapper;
 import com.nexus.manager.pojo.TbOrder;
 
 public interface TbOrderMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(TbOrder record);
 
     int insertSelective(TbOrder record);
 
-    TbOrder selectByPrimaryKey(Integer id);
+    TbOrder selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(TbOrder record);
 

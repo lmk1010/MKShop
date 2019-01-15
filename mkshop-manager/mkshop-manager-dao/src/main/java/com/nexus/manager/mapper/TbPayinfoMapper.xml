@@ -3,9 +3,9 @@
 <mapper namespace="com.nexus.manager.mapper.TbPayinfoMapper" >
   <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbPayinfo" >
     <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="order_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="order_num" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="payment_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="payment_number" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="payment_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -17,21 +17,21 @@
     id, order_num, user_id, payment_type, payment_number, payment_status, create_time, 
     update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from tb_payinfo
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_payinfo
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.nexus.manager.pojo.TbPayinfo" >
     insert into tb_payinfo (id, order_num, user_id, 
       payment_type, payment_number, payment_status, 
       create_time, update_time)
-    values (#{id,jdbcType=INTEGER}, #{orderNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
       #{paymentType,jdbcType=INTEGER}, #{paymentNumber,jdbcType=INTEGER}, #{paymentStatus,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
@@ -65,13 +65,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="orderNum != null" >
-        #{orderNum,jdbcType=INTEGER},
+        #{orderNum,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="paymentType != null" >
         #{paymentType,jdbcType=INTEGER},
@@ -94,10 +94,10 @@
     update tb_payinfo
     <set >
       <if test="orderNum != null" >
-        order_num = #{orderNum,jdbcType=INTEGER},
+        order_num = #{orderNum,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="paymentType != null" >
         payment_type = #{paymentType,jdbcType=INTEGER},
@@ -115,17 +115,17 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbPayinfo" >
     update tb_payinfo
-    set order_num = #{orderNum,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+    set order_num = #{orderNum,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
       payment_type = #{paymentType,jdbcType=INTEGER},
       payment_number = #{paymentNumber,jdbcType=INTEGER},
       payment_status = #{paymentStatus,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

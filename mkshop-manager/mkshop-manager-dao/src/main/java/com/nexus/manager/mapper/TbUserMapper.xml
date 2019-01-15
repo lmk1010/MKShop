@@ -3,7 +3,7 @@
 <mapper namespace="com.nexus.manager.mapper.TbUserMapper" >
   <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbUser" >
     <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -12,7 +12,7 @@
       <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="role_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="role_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="createtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="updatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
@@ -21,15 +21,15 @@
     id, username, password, email, phonenumber, sex, address, status, description, role_id, 
     createtime, updatetime
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from tb_user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.nexus.manager.pojo.TbUser" >
     insert into tb_user (id, username, password, 
@@ -37,10 +37,10 @@
       address, status, description, 
       role_id, createtime, updatetime
       )
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
-      #{roleId,jdbcType=INTEGER}, now(), now()
+      #{roleId,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbUser" >
@@ -85,7 +85,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
@@ -112,13 +112,13 @@
         #{description,jdbcType=VARCHAR},
       </if>
       <if test="roleId != null" >
-        #{roleId,jdbcType=INTEGER},
+        #{roleId,jdbcType=BIGINT},
       </if>
       <if test="createtime != null" >
-        now(),
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="updatetime != null" >
-        now(),
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -150,16 +150,16 @@
         description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="roleId != null" >
-        role_id = #{roleId,jdbcType=INTEGER},
+        role_id = #{roleId,jdbcType=BIGINT},
       </if>
       <if test="createtime != null" >
         createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="updatetime != null" >
-        now(),
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbUser" >
     update tb_user
@@ -171,17 +171,9 @@
       address = #{address,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       description = #{description,jdbcType=VARCHAR},
-      role_id = #{roleId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=BIGINT},
       createtime = #{createtime,jdbcType=TIMESTAMP},
-      updatetime = now(),
-    where id = #{id,jdbcType=INTEGER}
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-
-  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
-    select
-    <include refid="Base_Column_List"/>
-    from tb_user
-    where username = #{username}
-  </select>
-
 </mapper>

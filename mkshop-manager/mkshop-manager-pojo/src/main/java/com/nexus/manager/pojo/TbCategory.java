@@ -1,12 +1,11 @@
 package com.nexus.manager.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TbCategory implements Serializable {
-    private Integer id;
+public class TbCategory {
+    private Long id;
 
-    private Integer parentId;
+    private Long parentId;
 
     private String name;
 
@@ -18,7 +17,7 @@ public class TbCategory implements Serializable {
 
     private Date updateTime;
 
-    public TbCategory(Integer id, Integer parentId, String name, Integer status, Integer sortOrder, Date createTime, Date updateTime) {
+    public TbCategory(Long id, Long parentId, String name, Integer status, Integer sortOrder, Date createTime, Date updateTime) {
         this.id = id;
         this.parentId = parentId;
         this.name = name;
@@ -32,19 +31,19 @@ public class TbCategory implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(Integer parentId) {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 

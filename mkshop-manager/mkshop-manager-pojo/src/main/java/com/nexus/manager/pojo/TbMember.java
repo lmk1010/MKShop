@@ -1,7 +1,9 @@
-package com.nexus.generator.pojo;
+package com.nexus.manager.pojo;
+
+import java.util.Date;
 
 public class TbMember {
-    private Integer id;
+    private Long id;
 
     private String username;
 
@@ -19,7 +21,11 @@ public class TbMember {
 
     private String imgurl;
 
-    public TbMember(Integer id, String username, String password, String email, String phonenumber, String sex, String address, String description, String imgurl) {
+    private Date createtime;
+
+    private Date updatetime;
+
+    public TbMember(Long id, String username, String password, String email, String phonenumber, String sex, String address, String description, String imgurl, Date createtime, Date updatetime) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -29,17 +35,19 @@ public class TbMember {
         this.address = address;
         this.description = description;
         this.imgurl = imgurl;
+        this.createtime = createtime;
+        this.updatetime = updatetime;
     }
 
     public TbMember() {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -105,5 +113,21 @@ public class TbMember {
 
     public void setImgurl(String imgurl) {
         this.imgurl = imgurl == null ? null : imgurl.trim();
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
     }
 }

@@ -1,9 +1,7 @@
 package com.nexus.manager.pojo;
 
-import java.io.Serializable;
-
-public class TbPermission implements Serializable {
-    private Integer id;
+public class TbPermission {
+    private Long id;
 
     private String url;
 
@@ -13,7 +11,7 @@ public class TbPermission implements Serializable {
 
     private Boolean available;
 
-    public TbPermission(Integer id, String url, String name, String permission, Boolean available) {
+    public TbPermission(Long id, String url, String name, String permission, Boolean available) {
         this.id = id;
         this.url = url;
         this.name = name;
@@ -25,11 +23,11 @@ public class TbPermission implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

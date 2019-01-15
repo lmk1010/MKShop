@@ -3,9 +3,9 @@
 <mapper namespace="com.nexus.manager.mapper.TbOrderMapper" >
   <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbOrder" >
     <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="order_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="order_num" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="payment" jdbcType="DOUBLE" javaType="java.lang.Double" />
       <arg column="payment_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="payment_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
@@ -23,15 +23,15 @@
     id, order_num, user_id, payment, payment_type, payment_time, status, express_cost, 
     send_time, finish_time, close_time, client_message, create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from tb_order
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_order
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.nexus.manager.pojo.TbOrder" >
     insert into tb_order (id, order_num, user_id, 
@@ -39,7 +39,7 @@
       status, express_cost, send_time, 
       finish_time, close_time, client_message, 
       create_time, update_time)
-    values (#{id,jdbcType=INTEGER}, #{orderNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
       #{payment,jdbcType=DOUBLE}, #{paymentType,jdbcType=INTEGER}, #{paymentTime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=INTEGER}, #{expressCost,jdbcType=DOUBLE}, #{sendTime,jdbcType=TIMESTAMP}, 
       #{finishTime,jdbcType=TIMESTAMP}, #{closeTime,jdbcType=TIMESTAMP}, #{clientMessage,jdbcType=VARCHAR}, 
@@ -93,13 +93,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="orderNum != null" >
-        #{orderNum,jdbcType=INTEGER},
+        #{orderNum,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="payment != null" >
         #{payment,jdbcType=DOUBLE},
@@ -140,10 +140,10 @@
     update tb_order
     <set >
       <if test="orderNum != null" >
-        order_num = #{orderNum,jdbcType=INTEGER},
+        order_num = #{orderNum,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="payment != null" >
         payment = #{payment,jdbcType=DOUBLE},
@@ -179,12 +179,12 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbOrder" >
     update tb_order
-    set order_num = #{orderNum,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+    set order_num = #{orderNum,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
       payment = #{payment,jdbcType=DOUBLE},
       payment_type = #{paymentType,jdbcType=INTEGER},
       payment_time = #{paymentTime,jdbcType=TIMESTAMP},
@@ -196,6 +196,6 @@
       client_message = #{clientMessage,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

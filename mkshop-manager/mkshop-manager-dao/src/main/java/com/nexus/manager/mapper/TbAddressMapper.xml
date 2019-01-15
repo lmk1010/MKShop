@@ -3,8 +3,8 @@
 <mapper namespace="com.nexus.manager.mapper.TbAddressMapper" >
   <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbAddress" >
     <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="receive_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="receive_address" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="receive_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -19,28 +19,22 @@
     id, user_id, receive_name, receive_address, receive_phone, receive_province, receive_city, 
     receive_post_code, create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from tb_address
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <select id="selectByUserId" parameterType="java.lang.Integer" resultType="com.nexus.manager.pojo.TbAddress">
-    select
-    <include refid="Base_Column_List" />
-    from tb_address
-    where user_id = #{userId}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_address
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.nexus.manager.pojo.TbAddress" >
     insert into tb_address (id, user_id, receive_name, 
       receive_address, receive_phone, receive_province, 
       receive_city, receive_post_code, create_time, 
       update_time)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{receiveName,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{receiveName,jdbcType=VARCHAR}, 
       #{receiveAddress,jdbcType=VARCHAR}, #{receivePhone,jdbcType=VARCHAR}, #{receiveProvince,jdbcType=VARCHAR}, 
       #{receiveCity,jdbcType=VARCHAR}, #{receivePostCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
@@ -81,10 +75,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="receiveName != null" >
         #{receiveName,jdbcType=VARCHAR},
@@ -116,7 +110,7 @@
     update tb_address
     <set >
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="receiveName != null" >
         receive_name = #{receiveName,jdbcType=VARCHAR},
@@ -143,11 +137,11 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbAddress" >
     update tb_address
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
       receive_name = #{receiveName,jdbcType=VARCHAR},
       receive_address = #{receiveAddress,jdbcType=VARCHAR},
       receive_phone = #{receivePhone,jdbcType=VARCHAR},
@@ -156,8 +150,6 @@
       receive_post_code = #{receivePostCode,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-
-
 </mapper>

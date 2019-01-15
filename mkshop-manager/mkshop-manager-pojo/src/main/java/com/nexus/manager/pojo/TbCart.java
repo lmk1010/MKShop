@@ -1,14 +1,13 @@
 package com.nexus.manager.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TbCart implements Serializable {
-    private Integer id;
+public class TbCart {
+    private Long id;
 
-    private Integer userId;
+    private Long userId;
 
-    private Integer itemId;
+    private Long itemId;
 
     private Integer quantity;
 
@@ -18,7 +17,7 @@ public class TbCart implements Serializable {
 
     private Date updateTime;
 
-    public TbCart(Integer id, Integer userId, Integer itemId, Integer quantity, Boolean checked, Date createTime, Date updateTime) {
+    public TbCart(Long id, Long userId, Long itemId, Integer quantity, Boolean checked, Date createTime, Date updateTime) {
         this.id = id;
         this.userId = userId;
         this.itemId = itemId;
@@ -32,27 +31,27 @@ public class TbCart implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public Integer getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Integer itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 

@@ -3,7 +3,7 @@
 <mapper namespace="com.nexus.manager.mapper.TbRoleMapper" >
   <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbRole" >
     <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
@@ -11,20 +11,20 @@
   <sql id="Base_Column_List" >
     id, description, name
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from tb_role
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_role
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.nexus.manager.pojo.TbRole" >
     insert into tb_role (id, description, name
       )
-    values (#{id,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+    values (#{id,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbRole" >
@@ -42,7 +42,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="description != null" >
         #{description,jdbcType=VARCHAR},
@@ -62,12 +62,12 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbRole" >
     update tb_role
     set description = #{description,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

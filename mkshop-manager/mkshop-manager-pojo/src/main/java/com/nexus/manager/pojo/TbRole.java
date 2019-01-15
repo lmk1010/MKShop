@@ -1,15 +1,13 @@
 package com.nexus.manager.pojo;
 
-import java.io.Serializable;
-
-public class TbRole implements Serializable {
-    private Integer id;
+public class TbRole {
+    private Long id;
 
     private String description;
 
     private String name;
 
-    public TbRole(Integer id, String description, String name) {
+    public TbRole(Long id, String description, String name) {
         this.id = id;
         this.description = description;
         this.name = name;
@@ -19,11 +17,11 @@ public class TbRole implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

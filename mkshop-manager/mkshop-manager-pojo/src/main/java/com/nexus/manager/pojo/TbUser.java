@@ -1,10 +1,9 @@
 package com.nexus.manager.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TbUser implements Serializable {
-    private Integer id;
+public class TbUser {
+    private Long id;
 
     private String username;
 
@@ -22,13 +21,13 @@ public class TbUser implements Serializable {
 
     private String description;
 
-    private Integer roleId;
+    private Long roleId;
 
     private Date createtime;
 
     private Date updatetime;
 
-    public TbUser(Integer id, String username, String password, String email, String phonenumber, String sex, String address, Integer status, String description, Integer roleId, Date createtime, Date updatetime) {
+    public TbUser(Long id, String username, String password, String email, String phonenumber, String sex, String address, Integer status, String description, Long roleId, Date createtime, Date updatetime) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -47,11 +46,11 @@ public class TbUser implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -119,11 +118,11 @@ public class TbUser implements Serializable {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
@@ -141,23 +140,5 @@ public class TbUser implements Serializable {
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
-    }
-
-    @Override
-    public String toString() {
-        return "TbUser{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
-                ", sex='" + sex + '\'' +
-                ", address='" + address + '\'' +
-                ", status=" + status +
-                ", description='" + description + '\'' +
-                ", roleId=" + roleId +
-                ", createtime=" + createtime +
-                ", updatetime=" + updatetime +
-                '}';
     }
 }

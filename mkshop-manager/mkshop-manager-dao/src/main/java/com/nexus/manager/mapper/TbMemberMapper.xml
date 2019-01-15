@@ -3,7 +3,7 @@
 <mapper namespace="com.nexus.manager.mapper.TbMemberMapper" >
   <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbMember" >
     <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -20,22 +20,22 @@
     id, username, password, email, phonenumber, sex, address, description, imgurl, createtime, 
     updatetime
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from tb_member
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_member
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.nexus.manager.pojo.TbMember" >
     insert into tb_member (id, username, password, 
       email, phonenumber, sex, 
       address, description, imgurl, 
       createtime, updatetime)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{imgurl,jdbcType=VARCHAR}, 
       #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
@@ -79,7 +79,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
@@ -147,7 +147,7 @@
         updatetime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbMember" >
     update tb_member
@@ -161,6 +161,6 @@
       imgurl = #{imgurl,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       updatetime = #{updatetime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

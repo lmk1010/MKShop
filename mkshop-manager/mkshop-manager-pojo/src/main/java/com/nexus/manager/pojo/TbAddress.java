@@ -1,13 +1,11 @@
 package com.nexus.manager.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TbAddress implements Serializable {
+public class TbAddress {
+    private Long id;
 
-    private Integer id;
-
-    private Integer userId;
+    private Long userId;
 
     private String receiveName;
 
@@ -25,7 +23,7 @@ public class TbAddress implements Serializable {
 
     private Date updateTime;
 
-    public TbAddress(Integer id, Integer userId, String receiveName, String receiveAddress, String receivePhone, String receiveProvince, String receiveCity, String receivePostCode, Date createTime, Date updateTime) {
+    public TbAddress(Long id, Long userId, String receiveName, String receiveAddress, String receivePhone, String receiveProvince, String receiveCity, String receivePostCode, Date createTime, Date updateTime) {
         this.id = id;
         this.userId = userId;
         this.receiveName = receiveName;
@@ -42,19 +40,19 @@ public class TbAddress implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
