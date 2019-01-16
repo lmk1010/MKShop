@@ -26,14 +26,15 @@ public interface MemberService {
     //退出登陆
     public ServerResponse logoutMK(String token);
     //注册--手机方式
-    public ServerResponse registerByPhone(String phonenumber);
+    public ServerResponse registerByPhone(String register_token);
     //前台忘记密码服务(验证手机号--->修改密码)
     //验证手机号发送短信,实现复用 注册和忘记密码
     public ServerResponse sendMessageCode(String phonenumber,Integer mode);
     //校验验证码的正确性
-    public ServerResponse checkCodeVaild(String token,String code);
+    public ServerResponse checkCodeVaild(String Verify_token,String code);
     //修改密码
     public ServerResponse forgetPass(String username,String passwordNew,String forgetToken);
+
 
 
 }

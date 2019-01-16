@@ -133,6 +133,7 @@ public class MemberServiceImpl  implements MemberService {
 
     @Override
     public ServerResponse registerByPhone(String phonenumber) {
+
         return null;
     }
 
@@ -184,10 +185,10 @@ public class MemberServiceImpl  implements MemberService {
     }
 
     @Override
-    public ServerResponse checkCodeVaild(String token, String code) {
+    public ServerResponse checkCodeVaild(String Verify_token, String code) {
         Map<String,String> returnMap = new HashMap<>();
         //从guavacache里读取验证码
-        String randomCacheCode = TokenCache.getKey(token);
+        String randomCacheCode = TokenCache.getKey(Verify_token);
         if (randomCacheCode==null){
             return ServerResponse.createByErrorMsg("token无效或者过期");
         }
@@ -195,12 +196,12 @@ public class MemberServiceImpl  implements MemberService {
             return ServerResponse.createByErrorMsg("验证码错误");
         }
         //清除验证码的缓存
-        TokenCache.remove(token);
+        TokenCache.remove(Verify_token);
         //设置❤新的token 用于修改密码
         String forgetToken = UUID.randomUUID().toString();
         TokenCache.setKey(TokenCache.TOKEN_PREFIX, forgetToken);
         returnMap.put("forgetToken", forgetToken);
-        return ServerResponse.createBySuccess(returnMap,"验证成功！请修改密码");
+        return ServerResponse.createBySuccess(returnMap,"验证成功！");
     }
 
     @Override
@@ -236,6 +237,7 @@ public class MemberServiceImpl  implements MemberService {
 
         Member member = new Member();
 
+        member.setId(tbMember.getId());
         member.setUsername(tbMember.getUsername());
         member.setNickname(tbMember.getNickname());
         member.setPhonenumber(tbMember.getPhonenumber());

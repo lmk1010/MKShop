@@ -25,14 +25,6 @@
     from tb_address
     where id = #{id,jdbcType=BIGINT}
   </select>
-
-  <select id="selectAllByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select
-    <include refid="Base_Column_List" />
-    from tb_address
-    where user_id = ${userId}
-  </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_address
     where id = #{id,jdbcType=BIGINT}

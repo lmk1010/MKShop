@@ -95,14 +95,14 @@ public class MemberController {
     @ApiOperation(httpMethod = "POST",value = "注册新用户-手机方式",
             produces = "application/json;charset=UTF-8",notes = "注册用户-手机方式")
     public ServerResponse registerByPhone(HttpServletRequest request,
-                                          @RequestParam("phonenumber") String phonenumber){
-        return memberService.registerByPhone(phonenumber);
+                                          @RequestParam("register_token") String register_token){
+        //todo 完善注册流程
+        return null;
     }
-
 
     @RequestMapping(value = "send_code",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     @ApiOperation(httpMethod = "POST",value = "发送验证码",
-            produces = "application/json;charset=UTF-8",notes = "用于忘记密码之前的手机验证和注册")
+            produces = "application/json;charset=UTF-8",notes = "用于忘记密码之前的手机验证和注册 101忘记密码 102注册")
     public ServerResponse toVaildPhoneNumber(@RequestParam("phonenumber") String phonenumber,
                                              @RequestParam("s_mode") Integer s_mode){
         ServerResponse serverResponse;
@@ -113,12 +113,10 @@ public class MemberController {
     @RequestMapping(value = "vaild_code",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     @ApiOperation(httpMethod = "POST",value = "验证手机验证码",
             produces = "application/json;charset=UTF-8",notes = "用于忘记密码之前的用户输入的验证码")
-    public ServerResponse toVaildCode(@RequestParam("token") String token,
+    public ServerResponse toVaildCode(@RequestParam("Verify_token") String Verify_token,
                                       @RequestParam("Code") String code){
-       return memberService.checkCodeVaild(token, code);
+       return memberService.checkCodeVaild(Verify_token, code);
     }
-
-
 
 
     @RequestMapping(value = "forget_password",method = RequestMethod.POST)

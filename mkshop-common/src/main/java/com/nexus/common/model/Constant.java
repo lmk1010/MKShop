@@ -15,7 +15,7 @@ public class Constant {
 
     public static String TOKEN_PREFIX = "Token_";
 
-    public static String CODE_TAG = "VerifyCode";
+    public static String CODE_TAG = "Verify_token";
 
     public enum SendSMSMode{
 

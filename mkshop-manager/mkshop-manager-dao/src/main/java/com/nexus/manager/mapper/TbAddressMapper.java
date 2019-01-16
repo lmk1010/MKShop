@@ -2,6 +2,8 @@ package com.nexus.manager.mapper;
 
 import com.nexus.manager.pojo.TbAddress;
 
+import java.util.List;
+
 public interface TbAddressMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface TbAddressMapper {
     int updateByPrimaryKeySelective(TbAddress record);
 
     int updateByPrimaryKey(TbAddress record);
+
+    List<TbAddress> selectAllByUserId(long userId);
 }
