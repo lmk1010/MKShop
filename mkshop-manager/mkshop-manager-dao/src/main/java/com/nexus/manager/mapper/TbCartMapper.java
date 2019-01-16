@@ -1,6 +1,9 @@
 package com.nexus.manager.mapper;
 
 import com.nexus.manager.pojo.TbCart;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TbCartMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +17,6 @@ public interface TbCartMapper {
     int updateByPrimaryKeySelective(TbCart record);
 
     int updateByPrimaryKey(TbCart record);
+
+    List<TbCart> selectByUserId(@Param("userId") long userId);
 }
