@@ -1,6 +1,9 @@
 package com.nexus.manager.mapper;
 
 import com.nexus.manager.pojo.TbOrder;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TbOrderMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +17,6 @@ public interface TbOrderMapper {
     int updateByPrimaryKeySelective(TbOrder record);
 
     int updateByPrimaryKey(TbOrder record);
+
+    List<TbOrder> selectByUserId(@Param("userId") long userId);
 }

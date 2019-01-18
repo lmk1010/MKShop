@@ -19,11 +19,13 @@ public class TbAddress {
 
     private String receivePostCode;
 
+    private Boolean isDefault;
+
     private Date createTime;
 
     private Date updateTime;
 
-    public TbAddress(Long id, Long userId, String receiveName, String receiveAddress, String receivePhone, String receiveProvince, String receiveCity, String receivePostCode, Date createTime, Date updateTime) {
+    public TbAddress(Long id, Long userId, String receiveName, String receiveAddress, String receivePhone, String receiveProvince, String receiveCity, String receivePostCode, Boolean isDefault, Date createTime, Date updateTime) {
         this.id = id;
         this.userId = userId;
         this.receiveName = receiveName;
@@ -32,6 +34,7 @@ public class TbAddress {
         this.receiveProvince = receiveProvince;
         this.receiveCity = receiveCity;
         this.receivePostCode = receivePostCode;
+        this.isDefault = isDefault;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -102,6 +105,14 @@ public class TbAddress {
 
     public void setReceivePostCode(String receivePostCode) {
         this.receivePostCode = receivePostCode == null ? null : receivePostCode.trim();
+    }
+
+    public Boolean getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
     }
 
     public Date getCreateTime() {

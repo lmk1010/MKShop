@@ -1,155 +1,164 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nexus.manager.mapper.TbOrderItemMapper" >
-  <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbOrderItem" >
-    <constructor >
-      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="order_num" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="item_id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="item_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="item_image" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="quantity" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="unit_price" jdbcType="DOUBLE" javaType="java.lang.Double" />
-      <arg column="total_price" jdbcType="DOUBLE" javaType="java.lang.Double" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nexus.manager.mapper.TbOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbOrderItem">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_num" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="item_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="item_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="item_image" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="quantity" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="unit_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="total_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, order_num, item_id, item_name, item_image, quantity, unit_price, total_price, 
     create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tb_order_item
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+
+  <select id="selectByOrderNum" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_order_item
+    where order_num = #{orderNum}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from tb_order_item
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.nexus.manager.pojo.TbOrderItem" >
+  <insert id="insert" parameterType="com.nexus.manager.pojo.TbOrderItem">
     insert into tb_order_item (id, order_num, item_id, 
       item_name, item_image, quantity, 
       unit_price, total_price, create_time, 
       update_time)
     values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, 
       #{itemName,jdbcType=VARCHAR}, #{itemImage,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, 
-      #{unitPrice,jdbcType=DOUBLE}, #{totalPrice,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{unitPrice,jdbcType=DECIMAL}, #{totalPrice,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbOrderItem" >
+  <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbOrderItem">
     insert into tb_order_item
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="orderNum != null" >
+      <if test="orderNum != null">
         order_num,
       </if>
-      <if test="itemId != null" >
+      <if test="itemId != null">
         item_id,
       </if>
-      <if test="itemName != null" >
+      <if test="itemName != null">
         item_name,
       </if>
-      <if test="itemImage != null" >
+      <if test="itemImage != null">
         item_image,
       </if>
-      <if test="quantity != null" >
+      <if test="quantity != null">
         quantity,
       </if>
-      <if test="unitPrice != null" >
+      <if test="unitPrice != null">
         unit_price,
       </if>
-      <if test="totalPrice != null" >
+      <if test="totalPrice != null">
         total_price,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="orderNum != null" >
+      <if test="orderNum != null">
         #{orderNum,jdbcType=BIGINT},
       </if>
-      <if test="itemId != null" >
+      <if test="itemId != null">
         #{itemId,jdbcType=BIGINT},
       </if>
-      <if test="itemName != null" >
+      <if test="itemName != null">
         #{itemName,jdbcType=VARCHAR},
       </if>
-      <if test="itemImage != null" >
+      <if test="itemImage != null">
         #{itemImage,jdbcType=VARCHAR},
       </if>
-      <if test="quantity != null" >
+      <if test="quantity != null">
         #{quantity,jdbcType=INTEGER},
       </if>
-      <if test="unitPrice != null" >
-        #{unitPrice,jdbcType=DOUBLE},
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=DECIMAL},
       </if>
-      <if test="totalPrice != null" >
-        #{totalPrice,jdbcType=DOUBLE},
+      <if test="totalPrice != null">
+        #{totalPrice,jdbcType=DECIMAL},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.nexus.manager.pojo.TbOrderItem" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.nexus.manager.pojo.TbOrderItem">
     update tb_order_item
-    <set >
-      <if test="orderNum != null" >
+    <set>
+      <if test="orderNum != null">
         order_num = #{orderNum,jdbcType=BIGINT},
       </if>
-      <if test="itemId != null" >
+      <if test="itemId != null">
         item_id = #{itemId,jdbcType=BIGINT},
       </if>
-      <if test="itemName != null" >
+      <if test="itemName != null">
         item_name = #{itemName,jdbcType=VARCHAR},
       </if>
-      <if test="itemImage != null" >
+      <if test="itemImage != null">
         item_image = #{itemImage,jdbcType=VARCHAR},
       </if>
-      <if test="quantity != null" >
+      <if test="quantity != null">
         quantity = #{quantity,jdbcType=INTEGER},
       </if>
-      <if test="unitPrice != null" >
-        unit_price = #{unitPrice,jdbcType=DOUBLE},
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
       </if>
-      <if test="totalPrice != null" >
-        total_price = #{totalPrice,jdbcType=DOUBLE},
+      <if test="totalPrice != null">
+        total_price = #{totalPrice,jdbcType=DECIMAL},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbOrderItem" >
+  <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbOrderItem">
     update tb_order_item
     set order_num = #{orderNum,jdbcType=BIGINT},
       item_id = #{itemId,jdbcType=BIGINT},
       item_name = #{itemName,jdbcType=VARCHAR},
       item_image = #{itemImage,jdbcType=VARCHAR},
       quantity = #{quantity,jdbcType=INTEGER},
-      unit_price = #{unitPrice,jdbcType=DOUBLE},
-      total_price = #{totalPrice,jdbcType=DOUBLE},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
 </mapper>

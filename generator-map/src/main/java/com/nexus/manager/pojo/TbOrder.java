@@ -1,5 +1,6 @@
 package com.nexus.manager.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class TbOrder {
@@ -9,7 +10,7 @@ public class TbOrder {
 
     private Long userId;
 
-    private Double payment;
+    private BigDecimal payment;
 
     private Integer paymentType;
 
@@ -17,7 +18,7 @@ public class TbOrder {
 
     private Integer status;
 
-    private Double expressCost;
+    private Long expressCost;
 
     private Date sendTime;
 
@@ -31,7 +32,7 @@ public class TbOrder {
 
     private Date updateTime;
 
-    public TbOrder(Long id, Long orderNum, Long userId, Double payment, Integer paymentType, Date paymentTime, Integer status, Double expressCost, Date sendTime, Date finishTime, Date closeTime, String clientMessage, Date createTime, Date updateTime) {
+    public TbOrder(Long id, Long orderNum, Long userId, BigDecimal payment, Integer paymentType, Date paymentTime, Integer status, Long expressCost, Date sendTime, Date finishTime, Date closeTime, String clientMessage, Date createTime, Date updateTime) {
         this.id = id;
         this.orderNum = orderNum;
         this.userId = userId;
@@ -76,11 +77,11 @@ public class TbOrder {
         this.userId = userId;
     }
 
-    public Double getPayment() {
+    public BigDecimal getPayment() {
         return payment;
     }
 
-    public void setPayment(Double payment) {
+    public void setPayment(BigDecimal payment) {
         this.payment = payment;
     }
 
@@ -108,11 +109,11 @@ public class TbOrder {
         this.status = status;
     }
 
-    public Double getExpressCost() {
+    public Long getExpressCost() {
         return expressCost;
     }
 
-    public void setExpressCost(Double expressCost) {
+    public void setExpressCost(Long expressCost) {
         this.expressCost = expressCost;
     }
 

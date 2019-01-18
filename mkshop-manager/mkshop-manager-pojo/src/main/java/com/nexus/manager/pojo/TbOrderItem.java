@@ -1,5 +1,6 @@
 package com.nexus.manager.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class TbOrderItem {
@@ -15,15 +16,15 @@ public class TbOrderItem {
 
     private Integer quantity;
 
-    private Double unitPrice;
+    private BigDecimal unitPrice;
 
-    private Double totalPrice;
+    private BigDecimal totalPrice;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public TbOrderItem(Long id, Long orderNum, Long itemId, String itemName, String itemImage, Integer quantity, Double unitPrice, Double totalPrice, Date createTime, Date updateTime) {
+    public TbOrderItem(Long id, Long orderNum, Long itemId, String itemName, String itemImage, Integer quantity, BigDecimal unitPrice, BigDecimal totalPrice, Date createTime, Date updateTime) {
         this.id = id;
         this.orderNum = orderNum;
         this.itemId = itemId;
@@ -88,19 +89,19 @@ public class TbOrderItem {
         this.quantity = quantity;
     }
 
-    public Double getUnitPrice() {
+    public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Double unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
     }
 
-    public Double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 

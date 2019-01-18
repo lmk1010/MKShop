@@ -1,33 +1,160 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nexus.manager.mapper.TbPayinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbPayinfo" >
-    <constructor >
-      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="order_num" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="user_id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="payment_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="payment_number" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="payment_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nexus.manager.mapper.TbPayinfoMapper">
+  <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbPayinfo">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_num" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="payment_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="payment_number" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="payment_status" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, order_num, user_id, payment_type, payment_number, payment_status, create_time, 
     update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tb_payinfo
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from tb_payinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.nexus.manager.pojo.TbPayinfo" >
+  <insert id="insert" parameterType="com.nexus.manager.pojo.TbPayinfo">
+    insert into tb_payinfo (id, order_num, user_id, 
+      payment_type, payment_number, payment_status, 
+      create_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{paymentType,jdbcType=VARCHAR}, #{paymentNumber,jdbcType=VARCHAR}, #{paymentStatus,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbPayinfo">
+    insert into tb_payinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="paymentType != null">
+        payment_type,
+      </if>
+      <if test="paymentNumber != null">
+        payment_number,
+      </if>
+      <if test="paymentStatus != null">
+        payment_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="paymentType != null">
+        #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentNumber != null">
+        #{paymentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentStatus != null">
+        #{paymentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nexus.manager.pojo.TbPayinfo">
+    update tb_payinfo
+    <set>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="paymentType != null">
+        payment_type = #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentNumber != null">
+        payment_number = #{paymentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentStatus != null">
+        payment_status = #{paymentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbPayinfo">
+    update tb_payinfo
+    set order_num = #{orderNum,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      payment_type = #{paymentType,jdbcType=VARCHAR},
+      payment_number = #{paymentNumber,jdbcType=VARCHAR},
+      payment_status = #{paymentStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.nexus.manager.pojo.TbPayinfo">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_num" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="payment_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="payment_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="payment_status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_num, user_id, payment_type, payment_number, payment_status, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_payinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_payinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.nexus.manager.pojo.TbPayinfo">
     insert into tb_payinfo (id, order_num, user_id, 
       payment_type, payment_number, payment_status, 
       create_time, update_time)
@@ -35,89 +162,89 @@
       #{paymentType,jdbcType=INTEGER}, #{paymentNumber,jdbcType=INTEGER}, #{paymentStatus,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbPayinfo" >
+  <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbPayinfo">
     insert into tb_payinfo
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="orderNum != null" >
+      <if test="orderNum != null">
         order_num,
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         user_id,
       </if>
-      <if test="paymentType != null" >
+      <if test="paymentType != null">
         payment_type,
       </if>
-      <if test="paymentNumber != null" >
+      <if test="paymentNumber != null">
         payment_number,
       </if>
-      <if test="paymentStatus != null" >
+      <if test="paymentStatus != null">
         payment_status,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="orderNum != null" >
+      <if test="orderNum != null">
         #{orderNum,jdbcType=BIGINT},
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         #{userId,jdbcType=BIGINT},
       </if>
-      <if test="paymentType != null" >
+      <if test="paymentType != null">
         #{paymentType,jdbcType=INTEGER},
       </if>
-      <if test="paymentNumber != null" >
+      <if test="paymentNumber != null">
         #{paymentNumber,jdbcType=INTEGER},
       </if>
-      <if test="paymentStatus != null" >
+      <if test="paymentStatus != null">
         #{paymentStatus,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.nexus.manager.pojo.TbPayinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.nexus.manager.pojo.TbPayinfo">
     update tb_payinfo
-    <set >
-      <if test="orderNum != null" >
+    <set>
+      <if test="orderNum != null">
         order_num = #{orderNum,jdbcType=BIGINT},
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         user_id = #{userId,jdbcType=BIGINT},
       </if>
-      <if test="paymentType != null" >
+      <if test="paymentType != null">
         payment_type = #{paymentType,jdbcType=INTEGER},
       </if>
-      <if test="paymentNumber != null" >
+      <if test="paymentNumber != null">
         payment_number = #{paymentNumber,jdbcType=INTEGER},
       </if>
-      <if test="paymentStatus != null" >
+      <if test="paymentStatus != null">
         payment_status = #{paymentStatus,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbPayinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbPayinfo">
     update tb_payinfo
     set order_num = #{orderNum,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=BIGINT},

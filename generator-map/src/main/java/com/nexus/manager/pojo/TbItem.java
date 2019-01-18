@@ -1,5 +1,6 @@
 package com.nexus.manager.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class TbItem {
@@ -15,7 +16,7 @@ public class TbItem {
 
     private String subImage;
 
-    private Double price;
+    private BigDecimal price;
 
     private Integer stock;
 
@@ -25,7 +26,7 @@ public class TbItem {
 
     private Date updateTime;
 
-    public TbItem(Long id, Integer categoryId, String title, String subtitle, String mainImage, String subImage, Double price, Integer stock, String detail, Date createTime, Date updateTime) {
+    public TbItem(Long id, Integer categoryId, String title, String subtitle, String mainImage, String subImage, BigDecimal price, Integer stock, String detail, Date createTime, Date updateTime) {
         this.id = id;
         this.categoryId = categoryId;
         this.title = title;
@@ -91,11 +92,11 @@ public class TbItem {
         this.subImage = subImage == null ? null : subImage.trim();
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

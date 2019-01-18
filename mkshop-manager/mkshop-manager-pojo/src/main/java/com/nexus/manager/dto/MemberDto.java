@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.io.Serializable;
 
 /**
- * @ClassName Member
+ * @ClassName MemberDto
  * @Description TODO
  * @Author liumingkang
  * @Date 2019-01-15 14:17
@@ -18,7 +18,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Member implements Serializable {
+public class MemberDto implements Serializable {
 
     private long id;
 

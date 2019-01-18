@@ -9,17 +9,17 @@ public class TbPayinfo {
 
     private Long userId;
 
-    private Integer paymentType;
+    private String paymentType;
 
-    private Integer paymentNumber;
+    private String paymentNumber;
 
-    private Integer paymentStatus;
+    private String paymentStatus;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public TbPayinfo(Long id, Long orderNum, Long userId, Integer paymentType, Integer paymentNumber, Integer paymentStatus, Date createTime, Date updateTime) {
+    public TbPayinfo(Long id, Long orderNum, Long userId, String paymentType, String paymentNumber, String paymentStatus, Date createTime, Date updateTime) {
         this.id = id;
         this.orderNum = orderNum;
         this.userId = userId;
@@ -58,28 +58,28 @@ public class TbPayinfo {
         this.userId = userId;
     }
 
-    public Integer getPaymentType() {
+    public String getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(Integer paymentType) {
-        this.paymentType = paymentType;
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType == null ? null : paymentType.trim();
     }
 
-    public Integer getPaymentNumber() {
+    public String getPaymentNumber() {
         return paymentNumber;
     }
 
-    public void setPaymentNumber(Integer paymentNumber) {
-        this.paymentNumber = paymentNumber;
+    public void setPaymentNumber(String paymentNumber) {
+        this.paymentNumber = paymentNumber == null ? null : paymentNumber.trim();
     }
 
-    public Integer getPaymentStatus() {
+    public String getPaymentStatus() {
         return paymentStatus;
     }
 
-    public void setPaymentStatus(Integer paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus == null ? null : paymentStatus.trim();
     }
 
     public Date getCreateTime() {

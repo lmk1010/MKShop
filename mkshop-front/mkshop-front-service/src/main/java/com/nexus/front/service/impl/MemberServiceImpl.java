@@ -1,7 +1,6 @@
 package com.nexus.front.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.nexus.common.cache.TokenCache;
 import com.nexus.common.jedis.JedisOperater;
 import com.nexus.common.model.Constant;
@@ -10,7 +9,7 @@ import com.nexus.common.model.ServerResponse;
 import com.nexus.common.utils.MessageUtil;
 import com.nexus.common.utils.RandomUtil;
 import com.nexus.front.service.MemberService;
-import com.nexus.manager.dto.Member;
+import com.nexus.manager.dto.MemberDto;
 import com.nexus.manager.mapper.TbMemberMapper;
 import com.nexus.manager.pojo.TbMember;
 import lombok.extern.slf4j.Slf4j;
@@ -85,16 +84,16 @@ public class MemberServiceImpl  implements MemberService {
         if (!loginMember.getPassword().equals(MD5Pass)){
             return ServerResponse.createByErrorMsg("密码错误");
         }
-        Member member = ConvertMember(loginMember);
+        MemberDto memberDto = ConvertMember(loginMember);
         String token = UUID.randomUUID().toString();
         //设置token
-        member.setToken(token);
+        memberDto.setToken(token);
         //将token缓存到redis中
-        jedisOperater.set(Constant.TOKEN_PREFIX+token, JSON.toJSONString(member));
+        jedisOperater.set(Constant.TOKEN_PREFIX+token, JSON.toJSONString(memberDto));
         //设置token过期时间
         jedisOperater.expire(Constant.TOKEN_PREFIX+token, Constant.TOKEN_EXPIRE);
         //返回给客户端token及用户信息
-        return ServerResponse.createBySuccess(member, "登陆成功");
+        return ServerResponse.createBySuccess(memberDto, "登陆成功");
     }
 
     @Override
@@ -115,14 +114,14 @@ public class MemberServiceImpl  implements MemberService {
         if(jsonMember.isEmpty()||jsonMember==null){
             return ServerResponse.createByErrorCode("token过期,需要重新登陆", ResponseCode.NEED_LOGIN.getCode());
         }
-        Member member = (Member) JSON.parse(jsonMember);
+        MemberDto memberDto = (MemberDto) JSON.parse(jsonMember);
         String newToken = UUID.randomUUID().toString();
-        member.setToken(newToken);
+        memberDto.setToken(newToken);
         //todo 先删除key 在set 为了避免get到第一次的缓存 目前还没找到直接修改value 两次读写 效率有所低
         jedisOperater.del(Constant.TOKEN_PREFIX+token);
-        jedisOperater.set(Constant.TOKEN_PREFIX+newToken,JSON.toJSONString(member));
+        jedisOperater.set(Constant.TOKEN_PREFIX+newToken,JSON.toJSONString(memberDto));
         jedisOperater.expire(Constant.TOKEN_PREFIX+newToken, Constant.TOKEN_EXPIRE);
-        return ServerResponse.createBySuccess(member, "成功刷新token");
+        return ServerResponse.createBySuccess(memberDto, "成功刷新token");
     }
 
     @Override
@@ -231,22 +230,22 @@ public class MemberServiceImpl  implements MemberService {
      * @Description //TODO 将pojo转换为dto给前端
      * @Date 2019-01-15
      * @Param [tbMember]
-     * @Return com.nexus.manager.dto.Member
+     * @Return com.nexus.manager.dto.MemberDto
      */
-    private Member ConvertMember(TbMember tbMember){
+    private MemberDto ConvertMember(TbMember tbMember){
 
-        Member member = new Member();
+        MemberDto memberDto = new MemberDto();
 
-        member.setId(tbMember.getId());
-        member.setUsername(tbMember.getUsername());
-        member.setNickname(tbMember.getNickname());
-        member.setPhonenumber(tbMember.getPhonenumber());
-        member.setDescription(tbMember.getDescription());
-        member.setAddress(tbMember.getAddress());
-        member.setImgurl(tbMember.getImgurl());
-        member.setSex(tbMember.getSex());
+        memberDto.setId(tbMember.getId());
+        memberDto.setUsername(tbMember.getUsername());
+        memberDto.setNickname(tbMember.getNickname());
+        memberDto.setPhonenumber(tbMember.getPhonenumber());
+        memberDto.setDescription(tbMember.getDescription());
+        memberDto.setAddress(tbMember.getAddress());
+        memberDto.setImgurl(tbMember.getImgurl());
+        memberDto.setSex(tbMember.getSex());
 
-        return member;
+        return memberDto;
     }
     /**
      *功能描述

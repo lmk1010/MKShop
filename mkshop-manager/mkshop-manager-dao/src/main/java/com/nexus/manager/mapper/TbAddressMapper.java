@@ -18,4 +18,5 @@ public interface TbAddressMapper {
     int updateByPrimaryKey(TbAddress record);
 
     List<TbAddress> selectAllByUserId(long userId);
+
 }
