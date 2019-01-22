@@ -47,6 +47,38 @@ public class Constant {
         }
     }
 
+    public enum CartStatusCode{
+        REV_SUCCESS(20000,"获取购物车信息成功"),
+        ADD_SUCCESS(20010,"已成功添加商品"),
+        ADD_FAILED(20011,"添加商品失败"),
+        DEL_SUCCESS(30010,"移除商品成功"),
+        DEL_FAILED(30011,"删除商品失败");
+
+        private String value;
+        private int code;
+
+        CartStatusCode(int code,String value){
+            this.code = code;
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+    }
+
 
     public enum OrderStatusCode{
         CANCEL(0,"已取消"),

@@ -32,4 +32,9 @@ public class BigDecimalUtil {
         return a1.subtract(b1);
     }
 
+    public static BigDecimal mulIntger(BigDecimal a,Integer b){
+        BigDecimal b1 = new BigDecimal(b);
+        return a.multiply(b1);
+    }
+
 }

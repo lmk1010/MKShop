@@ -1,6 +1,7 @@
 package com.nexus.manager.mapper;
 
 import com.nexus.manager.pojo.TbItem;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbItemMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +15,9 @@ public interface TbItemMapper {
     int updateByPrimaryKeySelective(TbItem record);
 
     int updateByPrimaryKey(TbItem record);
+
+    //CartService 检测库存
+    Integer selectStockByItemId(@Param("itemId") long itemId);
+    //CartService 更新商品库存
+    Integer updateStockByItemId(@Param("itemId") long itemId,@Param("stockNew") Integer stockNew);
 }

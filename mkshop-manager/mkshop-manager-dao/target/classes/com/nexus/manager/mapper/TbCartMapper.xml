@@ -27,17 +27,36 @@
     from tb_cart
     where user_id = #{userId}
   </select>
+  <select id="selectItemByUserId" resultType="com.nexus.manager.dto.CartItem" parameterType="java.lang.Long" >
+    select tb_cart.id, user_id, item_id, title,subtitle,main_image,sub_image,price,quantity, stock,checked
+    from tb_cart,tb_item
+    where tb_cart.item_id = tb_item.id and user_id = #{userId}
+  </select>
+  <select id="selectItemByUserIdAndItemId" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_cart
+    where user_id = #{userId} and item_id = #{itemId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_cart
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.nexus.manager.pojo.TbCart" >
+  <delete id="deleteItemByUserIdAndItemId" parameterType="java.util.Map" >
+    delete from tb_cart
+    where user_id = #{userId} and item_id = #{itemId}
+  </delete>
+  <delete id="deleteItemByUserId" parameterType="java.lang.Long" >
+    delete from tb_cart
+    where user_id = #{userId}
+  </delete>
+  <insert id="insert" parameterType="com.nexus.manager.pojo.TbCart" useGeneratedKeys="true" keyProperty="id">
     insert into tb_cart (id, user_id, item_id, 
       quantity, checked, create_time, 
       update_time)
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, 
-      #{quantity,jdbcType=INTEGER}, #{checked,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{quantity,jdbcType=INTEGER}, #{checked,jdbcType=BIT}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbCart" >
     insert into tb_cart
@@ -119,7 +138,14 @@
       quantity = #{quantity,jdbcType=INTEGER},
       checked = #{checked,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = now()
     where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateAllCheckedByUserId" parameterType="java.lang.Long" >
+    update tb_cart
+    set checked = true,
+    update_time = now()
+    where user_id = #{userId}
   </update>
 </mapper>

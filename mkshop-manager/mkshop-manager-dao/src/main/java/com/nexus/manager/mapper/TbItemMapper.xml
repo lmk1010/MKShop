@@ -26,6 +26,13 @@
     from tb_item
     where id = #{id,jdbcType=BIGINT}
   </select>
+
+  <select id="selectStockByItemId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select stock
+    from tb_item
+    where id = #{itemId}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from tb_item
     where id = #{id,jdbcType=BIGINT}
@@ -149,6 +156,14 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <update id="updateStockByItemId" parameterType="java.util.Map">
+    update tb_item
+    set stock = #{stockNew}
+    where id = #{itemId}
+  </update>
+
+
   <update id="updateByPrimaryKey" parameterType="com.nexus.manager.pojo.TbItem">
     update tb_item
     set category_id = #{categoryId,jdbcType=INTEGER},

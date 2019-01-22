@@ -15,17 +15,10 @@ import redis.clients.jedis.JedisPool;
  * @Date 2019-01-15 11:12
  * @Version 1.0
  **/
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config.xml")
 public class redisTest {
-
-    @Autowired
-    private JedisOperater JedisOperater;
 
     @Test
     public void test2(){
-
-        JedisOperater.set("shangwu22", "333");
 
     }
 
