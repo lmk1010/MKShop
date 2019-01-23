@@ -7,18 +7,9 @@ import com.nexus.common.model.ServerResponse;
 import com.nexus.common.utils.DateTimeUtil;
 import com.nexus.common.utils.NumberUtil;
 import com.nexus.front.service.OrderService;
-import com.nexus.manager.dto.CartItem;
-import com.nexus.manager.dto.OrderDto;
-import com.nexus.manager.dto.OrderInfo;
-import com.nexus.manager.dto.OrderItemDto;
-import com.nexus.manager.mapper.TbItemMapper;
-import com.nexus.manager.mapper.TbMemberMapper;
-import com.nexus.manager.mapper.TbOrderItemMapper;
-import com.nexus.manager.mapper.TbOrderMapper;
-import com.nexus.manager.pojo.TbCart;
-import com.nexus.manager.pojo.TbMember;
-import com.nexus.manager.pojo.TbOrder;
-import com.nexus.manager.pojo.TbOrderItem;
+import com.nexus.manager.dto.*;
+import com.nexus.manager.mapper.*;
+import com.nexus.manager.pojo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,6 +41,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private TbMemberMapper tbMemberMapper;
 
+    @Autowired
+    private TbOrderAddrMapper tbOrderAddrMapper;
+
+    @Autowired
+    private TbAddressMapper tbAddressMapper;
+
     /*
      *功能描述
      * @Author liumingkang
@@ -71,6 +68,24 @@ public class OrderServiceImpl implements OrderService {
         PageInfo pageInfo = new PageInfo(orderDtoList);
         pageInfo.setList(orderDtoList);
         return ServerResponse.createBySuccess(pageInfo, "查询成功");
+    }
+    /*
+     *功能描述
+     * @Author liumingkang
+     * @Description //TODO 通过ID来获取订单
+     * @Date 2019-01-23
+     * @Param [orderNum]
+     * @Return com.nexus.common.model.ServerResponse
+     */
+    @Override
+    public ServerResponse getOrder(long orderNum) {
+        //查找订单
+        TbOrder tbOrder = tbOrderMapper.selectByOrderNum(orderNum);
+        if (tbOrder==null){
+            return ServerResponse.createByErrorMsg("无此订单");
+        }
+        OrderDto orderDto = this.convertOrderToDto(tbOrder);
+        return ServerResponse.createBySuccess(orderDto, "订单获取成功");
     }
 
     /*
@@ -121,6 +136,15 @@ public class OrderServiceImpl implements OrderService {
                 return ServerResponse.createByErrorMsg("生成订单条目失败");
             }
         }
+        //订单关联收货地址
+        TbOrderAddr tbOrderAddr = new TbOrderAddr();
+        tbOrderAddr.setAddressId(orderInfo.getAddress_id());
+        tbOrderAddr.setOrderNum(orderNum);
+        int insertStatus = tbOrderAddrMapper.insert(tbOrderAddr);
+        if (insertStatus==0){
+            return ServerResponse.createByErrorMsg("关联收货地址失败");
+        }
+        //返回订单号
         Map<String,Long> result = new HashMap<>();
         result.put("orderNum", orderNum);
         return ServerResponse.createBySuccess(result, "生成订单成功");
@@ -149,11 +173,82 @@ public class OrderServiceImpl implements OrderService {
         return ServerResponse.createBySuccess("订单关闭");
     }
 
+    @Override
+    public ServerResponse payOrder() {
+        return null;
+    }
 
     /*
      *功能描述
      * @Author liumingkang
-     * @Description //TODO 将查询到的订单数据汇总设置到返回订单视图中
+     * @Description //TODO 将查询到的单订单数据汇总设置到返回订单视图中
+     * @Date 2019-01-23
+     * @Param [tbOrder]
+     * @Return com.nexus.manager.dto.OrderDto
+     */
+    private OrderDto convertOrderToDto(TbOrder p){
+
+        //创建返回订单视图
+        OrderDto orderDto = new OrderDto();
+        //设置订单号
+        orderDto.setOrderNum(p.getOrderNum());
+        //设置付款金额
+        orderDto.setPayment(p.getPayment());
+        //设置付款方式（1-在线支付）
+        orderDto.setPaymentType(p.getPaymentType());
+        //设置支付时间
+        orderDto.setPaymentTime(p.getPaymentTime());
+        //设置订单状态
+        orderDto.setStatus(p.getStatus());
+        //设置订单创建时间
+        orderDto.setSendTime(DateTimeUtil.dateToStr(p.getSendTime()));
+        //设置订单完成时间
+        orderDto.setFinishTime(DateTimeUtil.dateToStr(p.getFinishTime()));
+        //设置订单的关闭时间
+        orderDto.setCloseTime(DateTimeUtil.dateToStr(p.getCloseTime()));
+
+        //查询订单中商品
+        List<TbOrderItem> tbOrderItemList = tbOrderItemMapper.selectByOrderNum(p.getOrderNum());
+        if (tbOrderItemList==null){
+            return null;
+        }
+        //创建订单内商品list视图
+        List<OrderItemDto> orderItemDtoList = new ArrayList<>();
+        for(TbOrderItem d : tbOrderItemList){
+            OrderItemDto orderItemDto = new OrderItemDto();
+            orderItemDto.setOrderNum(d.getOrderNum());
+            orderItemDto.setItemId(d.getItemId());
+            orderItemDto.setItemName(d.getItemName());
+            orderItemDto.setItemImage(d.getItemImage());
+            orderItemDto.setQuantity(d.getQuantity());
+            orderItemDto.setUnitPrice(d.getUnitPrice());
+            orderItemDto.setTotalPrice(d.getTotalPrice());
+            orderItemDtoList.add(orderItemDto);
+        }
+        //设置订单内商品视图
+        orderDto.setOrderItemDtoList(orderItemDtoList);
+        //设置收货地址
+        TbOrderAddr tbOrderAddr = tbOrderAddrMapper.selectByPrimaryKey(p.getOrderNum());
+        if (tbOrderAddr==null){
+            return null;
+        }
+        //根据订单号查找收货地址
+        TbAddress tbAddress = tbAddressMapper.selectByPrimaryKey(tbOrderAddr.getAddressId());
+        Address address = new Address();
+        address.setReceiveName(tbAddress.getReceiveName());
+        address.setReceiveAddress(tbAddress.getReceiveAddress());
+        address.setReceivePhone(tbAddress.getReceivePhone());
+        address.setReceivePostCode(tbAddress.getReceivePostCode());
+        //设置收货地址
+        orderDto.setAddressInfo(address);
+        return orderDto;
+    }
+
+
+    /*
+     *功能描述
+     * @Author liumingkang
+     * @Description //TODO 将查询到的所有订单数据汇总设置到返回订单视图中
      * @Date 2019-01-18
      * @Param [tbOrderList]
      * @Return java.util.List<com.nexus.manager.dto.OrderDto>
@@ -163,48 +258,8 @@ public class OrderServiceImpl implements OrderService {
         List<OrderDto> orderDtoList = new ArrayList<>();
         //遍历订单
         for (TbOrder p : tbOrderList){
-            //创建返回订单视图
-            OrderDto orderDto = new OrderDto();
-            //设置订单号
-            orderDto.setOrderNum(p.getOrderNum());
-            //设置付款金额
-            orderDto.setPayment(p.getPayment());
-            //设置付款方式（1-在线支付）
-            orderDto.setPaymentType(p.getPaymentType());
-            //设置支付时间
-            orderDto.setPaymentTime(p.getPaymentTime());
-            //设置订单状态
-            orderDto.setStatus(p.getStatus());
-            //设置订单创建时间
-            orderDto.setSendTime(DateTimeUtil.dateToStr(p.getSendTime()));
-            //设置订单完成时间
-            orderDto.setFinishTime(DateTimeUtil.dateToStr(p.getFinishTime()));
-            //设置订单的关闭时间
-            orderDto.setCloseTime(DateTimeUtil.dateToStr(p.getCloseTime()));
-
-            //查询订单中商品
-            List<TbOrderItem> tbOrderItemList = tbOrderItemMapper.selectByOrderNum(p.getOrderNum());
-            if (tbOrderItemList==null){
-                return null;
-            }
-            //创建订单内商品list视图
-            List<OrderItemDto> orderItemDtoList = new ArrayList<>();
-            for(TbOrderItem d : tbOrderItemList){
-                OrderItemDto orderItemDto = new OrderItemDto();
-                orderItemDto.setOrderNum(d.getOrderNum());
-                orderItemDto.setItemId(d.getItemId());
-                orderItemDto.setItemName(d.getItemName());
-                orderItemDto.setItemImage(d.getItemImage());
-                orderItemDto.setQuantity(d.getQuantity());
-                orderItemDto.setUnitPrice(d.getUnitPrice());
-                orderItemDto.setTotalPrice(d.getTotalPrice());
-                orderItemDtoList.add(orderItemDto);
-            }
-            //设置订单内商品视图
-            orderDto.setOrderItemDtoList(orderItemDtoList);
             //将单次订单添加入所有订单list
-            orderDtoList.add(orderDto);
-
+            orderDtoList.add(this.convertOrderToDto(p));
         }
         return orderDtoList;
 

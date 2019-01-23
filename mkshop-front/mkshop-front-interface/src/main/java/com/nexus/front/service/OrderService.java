@@ -6,10 +6,15 @@ import com.nexus.manager.dto.OrderInfo;
 public interface OrderService {
 
     public ServerResponse getOrder(long user_id,int pageNum,int pageSize);
+
+    public ServerResponse getOrder(long orderNum);
     
     public ServerResponse createOrder(OrderInfo orderInfo);
 
     public ServerResponse disableOrder(long orderNum);
+
+    public ServerResponse payOrder();
+
     
     
 }

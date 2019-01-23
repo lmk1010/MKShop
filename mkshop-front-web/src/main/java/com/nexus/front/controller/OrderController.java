@@ -33,7 +33,6 @@ public class OrderController {
         return orderService.getOrder(userId, pageNum, pageSize);
     }
 
-
     @RequestMapping(value = "create_order",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     @ApiOperation(value = "创建订单",httpMethod = "POST",produces = "application/json;charset=UTF-8")
     public ServerResponse createOrder(@RequestBody OrderInfo orderInfo){
@@ -45,6 +44,15 @@ public class OrderController {
     public ServerResponse disableOrder(@RequestBody OrderDto orderDto){
         return orderService.disableOrder(orderDto.getOrderNum());
     }
+
+    @RequestMapping(value = "pay",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ApiOperation(value = "支付订单",httpMethod = "POST",produces = "application/json;charset=UTF-8")
+    public ServerResponse payOrder(@RequestBody OrderDto orderDto){
+        return orderService.disableOrder(orderDto.getOrderNum());
+    }
+
+
+
 
 
 

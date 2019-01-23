@@ -41,5 +41,7 @@ public class OrderDto implements Serializable {
     private String finishTime;
     //订单的关闭时间
     private String closeTime;
+    //订单的收货地址
+    private Address addressInfo;
 
 }
