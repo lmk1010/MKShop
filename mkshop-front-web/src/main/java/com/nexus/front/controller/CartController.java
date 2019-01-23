@@ -33,12 +33,10 @@ public class CartController {
         return cartService.getCartByUser(cartInfo);
     }
 
-
     @RequestMapping(value = "add_item",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     @ApiOperation(httpMethod = "POST",value = "添加商品到购物车",
             produces = "application/json;charset=UTF-8",notes = "传入TBCART")
     public ServerResponse toAddItemToCart(@RequestBody CartInfo cartInfo){
-
         return cartService.addCart(cartInfo);
     }
 
@@ -60,7 +58,7 @@ public class CartController {
     @ApiOperation(httpMethod = "POST",value = "清空已选中的商品",
             produces = "application/json;charset=UTF-8",notes = "传入TBCART")
     public ServerResponse toDeleteItemCheckedFromCart(@RequestBody CartInfo cartInfo){
-        return null;
+        return cartService.editCart(cartInfo);
     }
 
     @RequestMapping(value = "check_all",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
@@ -68,6 +66,13 @@ public class CartController {
             produces = "application/json;charset=UTF-8",notes = "传入cartInfo")
     public ServerResponse toCheckedAllFromCart(@RequestBody CartInfo cartInfo){
         return cartService.checkedAllCartItem(cartInfo);
+    }
+
+    @RequestMapping(value = "clean_all",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ApiOperation(httpMethod = "POST",value = "清空该用户购物车内所有商品",
+            produces = "application/json;charset=UTF-8",notes = "传入TBCART")
+    public ServerResponse toCleanAllItemFromCart(@RequestBody CartInfo cartInfo){
+        return cartService.cleanCart(cartInfo.getUserId());
     }
 
 

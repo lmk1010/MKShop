@@ -135,8 +135,18 @@ public class CartServiceImpl implements CartService {
     public ServerResponse editCart(CartInfo cartInfo) {
         //查询DB中Cart
         TbCart updateCart = tbCartMapper.selectItemByUserIdAndItemId(cartInfo.getUserId(), cartInfo.getItemId());
-        //更新checked和数量属性
-        updateCart.setQuantity(cartInfo.getQuantity());
+        //校验
+        if (cartInfo.getQuantity()!=null&&cartInfo.getQuantity()!=0){
+            //校验库存
+            Integer stockStatus = tbItemMapper.selectStockByItemId(cartInfo.getItemId());
+            Integer stockNew = stockStatus-cartInfo.getQuantity();
+            if (stockNew<0){
+                return ServerResponse.createBySuccessMsg("库存不足");
+            }
+            //更新数量属性
+            updateCart.setQuantity(cartInfo.getQuantity());
+        }
+        //更新checked
         updateCart.setChecked(cartInfo.getChecked().equals(1));
         //更新
         int updateStatus = tbCartMapper.updateByPrimaryKeySelective(updateCart);
