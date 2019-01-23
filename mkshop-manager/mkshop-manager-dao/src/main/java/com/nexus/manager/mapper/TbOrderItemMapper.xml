@@ -44,8 +44,8 @@
       update_time)
     values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, 
       #{itemName,jdbcType=VARCHAR}, #{itemImage,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, 
-      #{unitPrice,jdbcType=DECIMAL}, #{totalPrice,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{unitPrice,jdbcType=DECIMAL}, #{totalPrice,jdbcType=DECIMAL}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.nexus.manager.pojo.TbOrderItem">
     insert into tb_order_item
@@ -107,10 +107,10 @@
         #{totalPrice,jdbcType=DECIMAL},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -139,10 +139,10 @@
         total_price = #{totalPrice,jdbcType=DECIMAL},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = now(),
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -157,7 +157,7 @@
       unit_price = #{unitPrice,jdbcType=DECIMAL},
       total_price = #{totalPrice,jdbcType=DECIMAL},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = now()
     where id = #{id,jdbcType=BIGINT}
   </update>
 

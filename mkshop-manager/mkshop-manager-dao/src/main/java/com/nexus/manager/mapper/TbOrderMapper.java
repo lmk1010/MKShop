@@ -19,4 +19,6 @@ public interface TbOrderMapper {
     int updateByPrimaryKey(TbOrder record);
 
     List<TbOrder> selectByUserId(@Param("userId") long userId);
+
+    TbOrder selectByOrderNum(@Param("orderNum") long orderNum);
 }
