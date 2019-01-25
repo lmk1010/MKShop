@@ -6,18 +6,21 @@ import com.nexus.common.jedis.JedisOperater;
 import com.nexus.common.model.Constant;
 import com.nexus.common.model.ResponseCode;
 import com.nexus.common.model.ServerResponse;
+import com.nexus.common.utils.JWTUtils;
 import com.nexus.common.utils.MessageUtil;
 import com.nexus.common.utils.RandomUtil;
 import com.nexus.front.service.MemberService;
 import com.nexus.manager.dto.MemberDto;
 import com.nexus.manager.mapper.TbMemberMapper;
 import com.nexus.manager.pojo.TbMember;
+import com.nimbusds.jose.JOSEException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
+import sun.tools.jstat.Token;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,6 +76,9 @@ public class MemberServiceImpl  implements MemberService {
 
     @Override
     public ServerResponse loginMK(String username, String password) {
+
+        String token = "";
+
         if (username==null){
             return ServerResponse.createByErrorCode("参数错误", ResponseCode.ILLEGA_ARGUMENT.getCode());
         }
@@ -84,7 +90,20 @@ public class MemberServiceImpl  implements MemberService {
         if (!loginMember.getPassword().equals(MD5Pass)){
             return ServerResponse.createByErrorMsg("密码错误");
         }
-        MemberDto memberDto = ConvertMember(loginMember);
+        try{
+            //利用JWT工具类创建token
+            token = JWTUtils.creatToken(this.ConvertMap(loginMember));
+            //缓存token入redis
+            jedisOperater.set(Constant.TOKEN_PREFIX+ token, JSON.toJSONString(loginMember));
+            //设置token过期时间
+            jedisOperater.expire(Constant.TOKEN_PREFIX+token, Constant.TOKEN_EXPIRE);
+        }catch (JOSEException e){
+            e.printStackTrace();
+        }
+        //返回客户端token
+        return ServerResponse.createBySuccess(token, "登陆成功");
+        /*以前组装为memberdto 现在改为JWT Token
+        //MemberDto memberDto = ConvertMember(loginMember);
         String token = UUID.randomUUID().toString();
         //设置token
         memberDto.setToken(token);
@@ -93,7 +112,7 @@ public class MemberServiceImpl  implements MemberService {
         //设置token过期时间
         jedisOperater.expire(Constant.TOKEN_PREFIX+token, Constant.TOKEN_EXPIRE);
         //返回给客户端token及用户信息
-        return ServerResponse.createBySuccess(memberDto, "登陆成功");
+        return ServerResponse.createBySuccess(memberDto, "登陆成功");*/
     }
 
     @Override
@@ -138,6 +157,7 @@ public class MemberServiceImpl  implements MemberService {
 
     @Override
     public ServerResponse sendMessageCode(String phonenumber,Integer mode) {
+        // todo mode为判断为修改密码还是忘记密码 后期进行重构 减少代码 增加复用
         if (mode.equals(Constant.SendSMSMode.FORGET_MODE.getCode())){
             //生成6为验证码
             String RandomCode = RandomUtil.getRandom();
@@ -175,6 +195,7 @@ public class MemberServiceImpl  implements MemberService {
             }
             //缓存验证码
             String codeKey = UUID.randomUUID().toString()+phonenumber;
+            //guavacache缓存时间设置为1分钟
             TokenCache.setKey(codeKey, messageCode);
             //将key发给前端 前端带token来验证验证码的正确
             res.put(Constant.CODE_TAG,codeKey);
@@ -247,6 +268,24 @@ public class MemberServiceImpl  implements MemberService {
 
         return memberDto;
     }
+
+    private Map<String,Object> ConvertMap(TbMember tbMember){
+        Map<String,Object> member = new HashMap<>();
+
+        member.put("id", tbMember.getId());
+        member.put("username", tbMember.getUsername());
+        member.put("nickname", tbMember.getNickname());
+        member.put("phonenumber", tbMember.getPhonenumber());
+        member.put("description", tbMember.getDescription());
+        member.put("address", tbMember.getAddress());
+        member.put("imgurl", tbMember.getImgurl());
+        member.put("sex", tbMember.getSex());
+
+        return member;
+
+    }
+
+
     /**
      *功能描述
      * @Author liumingkang

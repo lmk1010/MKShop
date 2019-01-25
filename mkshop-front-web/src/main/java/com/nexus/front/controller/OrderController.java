@@ -48,7 +48,7 @@ public class OrderController {
     @RequestMapping(value = "pay",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     @ApiOperation(value = "支付订单",httpMethod = "POST",produces = "application/json;charset=UTF-8")
     public ServerResponse payOrder(@RequestBody OrderDto orderDto){
-        return orderService.disableOrder(orderDto.getOrderNum());
+        return ServerResponse.createBySuccessMsg("之后在做");
     }
 
 

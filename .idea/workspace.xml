@@ -2,20 +2,38 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="mkshop-front-service:war exploded" />
+      <artifact name="mkshop-front-web:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="428dcb79-5b51-42cc-a362-3e57673f84cb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/src/main/java/com/nexus/manager/mapper/TbOrderAddrMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/src/main/java/com/nexus/manager/mapper/TbOrderAddrMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/pojo/TbOrderAddr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/17c00fd1-d6c7-4daf-8eb6-f0dceb618436.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/17c00fd1-d6c7-4daf-8eb6-f0dceb618436.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_stephenc_jcip_jcip_annotations_1_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_4_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_1_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/JWTUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/ItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/ItemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/ItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mkshop_front_service_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/mkshop_front_service_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mkshop_front_web_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/mkshop_front_web_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mkshop_manager_service_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/mkshop_manager_service_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mkshop_manager_web_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/mkshop_manager_web_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generator-map/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/generator-map/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-common/mkshop-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-common/mkshop-common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/cache/TokenCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/cache/TokenCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-front-web/mkshop-front-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-front-web/mkshop-front-web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/mkshop-front-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/mkshop-front-interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-front/mkshop-front-service/mkshop-front-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-front/mkshop-front-service/mkshop-front-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-manager-web/mkshop-manager-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-manager-web/mkshop-manager-web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-interface/mkshop-manager-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-interface/mkshop-manager-interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-service/mkshop-manager-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-service/mkshop-manager-service.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/mkshop-parent/target/" />
     <ignored path="$PROJECT_DIR$/mkshop-manager/target/" />
@@ -73,28 +91,7 @@
         <item name="MKShopDB" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="MKShop: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="tb_address: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MKShopDB" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="MKShop: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="tb_order: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MKShopDB" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="MKShop: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="tb_order_addr: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MKShopDB" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="MKShop: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="tb_payinfo: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="tb_category: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -103,24 +100,60 @@
     <favorites_list name="MKShop" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/OrderService.java">
+        <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/MemberServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+            <state relative-caret-position="-17">
+              <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mkshop-common/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="496">
+              <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/JWTUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/MemberDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/model/Constant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/OrderServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="177" column="8" selection-start-line="177" selection-start-column="8" selection-end-line="177" selection-end-column="20" />
+            <state relative-caret-position="163">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,25 +162,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/OrderController.java">
+        <entry file="file://$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/MemberController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="230">
+              <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -168,15 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/model/ResponseCode.java" />
-        <option value="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/MessageUtil.java" />
-        <option value="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/MemberController.java" />
-        <option value="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/cache/TokenCache.java" />
-        <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/MemberService.java" />
-        <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/MemberServiceImpl.java" />
-        <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/AddressService.java" />
-        <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/AddressServiceImpl.java" />
-        <option value="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/AddressController.java" />
         <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/CartService.java" />
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/Item.java" />
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/src/main/java/com/nexus/manager/mapper/TbAddressMapper.java" />
@@ -185,7 +194,6 @@
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderInfoDto.java" />
         <option value="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/DateTimeUtil.java" />
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/pojo/TbAddress.java" />
-        <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderDto.java" />
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/src/main/java/com/nexus/manager/mapper/TbOrderItemMapper.java" />
         <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/resources/spring-dubbo.xml" />
         <option value="$PROJECT_DIR$/mkshop-front-web/src/main/resources/spring-consumer.xml" />
@@ -208,7 +216,6 @@
         <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/CartService.java" />
         <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/CartServiceImpl.java" />
         <option value="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/CartController.java" />
-        <option value="$PROJECT_DIR$/mkshop-common/pom.xml" />
         <option value="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/NumberUtil.java" />
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderInfo.java" />
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/src/main/java/com/nexus/manager/mapper/TbOrderMapper.java" />
@@ -216,9 +223,20 @@
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/src/main/java/com/nexus/manager/mapper/TbOrderItemMapper.xml" />
         <option value="$PROJECT_DIR$/generator-map/src/main/resources/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/pojo/TbOrderAddr.java" />
-        <option value="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/OrderController.java" />
         <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderDto.java" />
+        <option value="$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/Address.java" />
         <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/OrderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/ItemController.java" />
+        <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/ItemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/ItemService.java" />
+        <option value="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/MemberController.java" />
+        <option value="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/cache/TokenCache.java" />
+        <option value="$PROJECT_DIR$/mkshop-common/pom.xml" />
+        <option value="$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/JWTUtils.java" />
+        <option value="$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/MemberServiceImpl.java" />
+        <option value="$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/LoginController.java" />
       </list>
     </option>
   </component>
@@ -286,97 +304,13 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
               <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="nexus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="nexus" type="462c0819:PsiDirectoryNode" />
-              <item name="generator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="nexus" type="462c0819:PsiDirectoryNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="nexus" type="462c0819:PsiDirectoryNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="nexus" type="462c0819:PsiDirectoryNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="pojo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MKShop" type="462c0819:PsiDirectoryNode" />
-              <item name="generator-map" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MKShop" type="b2602c69:ProjectViewProjectNode" />
@@ -737,22 +671,21 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548221289301" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548389516762" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -783,7 +716,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.MKShopFrontProvider">
+  <component name="RunManager" selected="Tomcat Server.MKShop">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -1286,11 +1219,11 @@
       <item itemvalue="Application.RandomUtil" />
       <item itemvalue="JUnit.redisTest.test2" />
       <item itemvalue="JUnit.redisTest" />
+      <item itemvalue="JUnit.TestDB.wewe" />
       <item itemvalue="Tomcat Server.MKShop" />
       <item itemvalue="Tomcat Server.MKShopProvider" />
       <item itemvalue="Tomcat Server.MKShopFrontProvider" />
       <item itemvalue="Tomcat Server.MKShopWeb" />
-      <item itemvalue="JUnit.TestDB.wewe" />
     </list>
     <recent_temporary>
       <list>
@@ -1355,7 +1288,8 @@
       <workItem from="1548056894483" duration="234000" />
       <workItem from="1548057181732" duration="144000" />
       <workItem from="1548057355553" duration="1385000" />
-      <workItem from="1548154003709" duration="22197000" />
+      <workItem from="1548154003709" duration="23971000" />
+      <workItem from="1548377799279" duration="2627000" />
     </task>
     <servers />
   </component>
@@ -1392,12 +1326,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184871000" />
+    <option name="totallyTimeSpent" value="189272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="806" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49601594" visible="true" weight="0.2739628" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49601594" visible="true" weight="0.27753934" />
       <window_info id="Structure" order="1" weight="0.24964234" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -1409,7 +1344,7 @@
       <window_info id="Favorites" order="9" sideWeight="0.5032538" side_tool="true" weight="0.30615166" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3277311" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49284694" weight="0.34033614" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49284694" visible="true" weight="0.34033614" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4985694" weight="0.3988764" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1529,55 +1464,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-dao/src/main/java/com/nexus/manager/mapper/TbMemberMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderItemDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/CartDto.java" />
-    <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/model/sdsd.java" />
-    <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/Cart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/BigDecimalUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://17c00fd1-d6c7-4daf-8eb6-f0dceb618436/schema/MKShop/table/tb_member">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/resources/spring-redis.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-341" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/resources/db.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1599,13 +1485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/model/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="54" column="35" lean-forward="true" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1734,27 +1613,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="75" column="21" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/NumberUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="515">
           <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1847,27 +1709,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/MemberController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        <state relative-caret-position="230">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/OrderServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6018#6019#0" expanded="true" />
+            <element signature="e#6045#6046#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/OrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
+        <state relative-caret-position="491">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2229#2230#0" expanded="true" />
+            <element signature="e#2293#2294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/Address.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/OrderDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1884,10 +1773,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/OrderServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/ItemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="177" column="8" selection-start-line="177" selection-start-column="8" selection-end-line="177" selection-end-column="20" />
+        <state relative-caret-position="361">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-interface/src/main/java/com/nexus/front/service/ItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/ItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/model/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/cache/TokenCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-pojo/src/main/java/com/nexus/manager/dto/MemberDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-common/src/main/java/com/nexus/common/utils/JWTUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-front/mkshop-front-service/src/main/java/com/nexus/front/service/impl/MemberServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/MemberController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkshop-front-web/src/main/java/com/nexus/front/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1948,7 +1916,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>mkshop-front-interface</last-edited>
+          <last-edited>mkshop-common</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

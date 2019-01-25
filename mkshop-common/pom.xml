@@ -74,5 +74,10 @@
             <artifactId>snowflake</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>4.23</version>
+        </dependency>
     </dependencies>
 </project>
