@@ -20,4 +20,8 @@ public interface TbItemMapper {
     Integer selectStockByItemId(@Param("itemId") long itemId);
     //CartService 更新商品库存
     Integer updateStockByItemId(@Param("itemId") long itemId,@Param("stockNew") Integer stockNew);
+    //ItemService 根据itemID 查询商品信息
+    TbItem selectByItemID(@Param("itemId") long itemId);
+
+
 }

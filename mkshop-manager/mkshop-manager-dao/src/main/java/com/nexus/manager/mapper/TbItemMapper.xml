@@ -21,7 +21,7 @@
     update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from tb_item
     where id = #{id,jdbcType=BIGINT}
@@ -29,6 +29,13 @@
 
   <select id="selectStockByItemId" parameterType="java.lang.Long" resultType="java.lang.Integer">
     select stock
+    from tb_item
+    where id = #{itemId}
+  </select>
+
+  <select id="selectByItemID" parameterType="java.lang.Long" resultType="com.nexus.manager.pojo.TbItem">
+    select
+    <include refid="Base_Column_List" />
     from tb_item
     where id = #{itemId}
   </select>
