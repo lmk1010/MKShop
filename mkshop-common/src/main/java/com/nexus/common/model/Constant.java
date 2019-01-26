@@ -17,6 +17,10 @@ public class Constant {
 
     public static String CODE_TAG = "Verify_token";
 
+    public static String SORTED_DESC =  "desc";
+
+    public static String SORTED_ASC =  "asc";
+
     public enum SendSMSMode{
 
         FORGET_MODE(101,"忘记"),
@@ -78,6 +82,36 @@ public class Constant {
             this.code = code;
         }
     }
+
+    public enum CategoryStatusCode{
+        ACTIVED("已开启",2000),
+        DISABLED("已停用",2001);
+
+        private String value;
+        private int code;
+
+        CategoryStatusCode(String value,int code){
+            this.code = code;
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+    }
+
 
 
     public enum OrderStatusCode{

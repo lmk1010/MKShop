@@ -2,6 +2,7 @@ package com.nexus.front.controller;
 
 import com.nexus.common.model.ServerResponse;
 import com.nexus.front.service.ItemService;
+import com.nexus.manager.dto.Item;
 import com.sun.tools.javac.jvm.Items;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +26,21 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
+
+    @RequestMapping(value = "getAllItem",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ApiOperation(httpMethod = "POST",value = "获取全部商品",
+            produces = "application/json;charset=UTF-8",notes = "获取全部item商品")
+    public ServerResponse toGetAllItem(@RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
+                                       @RequestParam(value = "pageSize",defaultValue = "20") int pageSize,
+                                       @RequestParam(value = "sorted",defaultValue = "desc") String sorted,
+                                       @RequestParam(value = "categoryId",defaultValue = "00000") long categoryId,
+                                       @RequestParam(value = "priceH",defaultValue = "-1") int priceH,
+                                       @RequestParam(value = "priceL",defaultValue = "-1") int peiceL){
+
+
+        return itemService.getAllItem(pageNum, pageSize, categoryId, sorted, priceH, peiceL);
+    }
+
 
 
     @RequestMapping(value = "getItem",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")

@@ -33,11 +33,34 @@
     where id = #{itemId}
   </select>
 
-  <select id="selectByItemID" parameterType="java.lang.Long" resultType="com.nexus.manager.pojo.TbItem">
+  <select id="selectByItemId" parameterType="java.lang.Long" resultType="com.nexus.manager.pojo.TbItem">
     select
     <include refid="Base_Column_List" />
     from tb_item
     where id = #{itemId}
+  </select>
+
+  <select id="selectByItemIds" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_item
+    <where>
+    <if test="categoryIds!=null">
+      category_id in 
+      <foreach collection="categoryIds" item="categoryId" index="index" open="(" separator="," close=")">
+        #{categoryId}
+      </foreach>
+    </if>
+    <if test="priceH > 0">
+      and price &lt; #{priceH}
+    </if>
+    <if test="priceL >0">
+      and price &gt; #{priceL}
+    </if>
+    <if test="sorted != null">
+      and order by #{sorted}
+    </if>
+    </where>
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

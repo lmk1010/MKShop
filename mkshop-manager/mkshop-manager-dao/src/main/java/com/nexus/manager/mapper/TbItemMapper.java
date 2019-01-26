@@ -3,6 +3,9 @@ package com.nexus.manager.mapper;
 import com.nexus.manager.pojo.TbItem;
 import org.apache.ibatis.annotations.Param;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 public interface TbItemMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -21,7 +24,11 @@ public interface TbItemMapper {
     //CartService 更新商品库存
     Integer updateStockByItemId(@Param("itemId") long itemId,@Param("stockNew") Integer stockNew);
     //ItemService 根据itemID 查询商品信息
-    TbItem selectByItemID(@Param("itemId") long itemId);
-
+    TbItem selectByItemId(@Param("itemId") long itemId);
+    //ItemService 根据ItemIdS 查询遍历
+    List<TbItem> selectByItemIds(@Param("sorted") String sorted,
+                                 @Param("priceH") BigDecimal priceH,
+                                 @Param("priceL") BigDecimal priceL,
+                                 @Param("categoryIds") List<Long> categoryIds);
 
 }
