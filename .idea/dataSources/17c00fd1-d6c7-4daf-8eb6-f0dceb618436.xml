@@ -1191,7 +1191,7 @@
     <column id="297" parent="250" name="category_id">
       <Position>2</Position>
       <Comment>分类ID</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="298" parent="250" name="title">

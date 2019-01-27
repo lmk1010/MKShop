@@ -25,5 +25,6 @@
     <dubbo:reference interface="com.nexus.front.service.CartService" id="cartService"/>
     <dubbo:reference interface="com.nexus.front.service.AddressService" id="addressService"/>
     <dubbo:reference interface="com.nexus.front.service.OrderService" id="orderService"/>
+    <dubbo:reference interface="com.nexus.front.service.ItemService" id="itemService"/>
 
 </beans>

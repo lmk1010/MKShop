@@ -1,13 +1,14 @@
 package com.nexus.manager.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class TbItem {
+public class TbItem implements Serializable {
 
     private Long id;
 
-    private Integer categoryId;
+    private Long categoryId;
 
     private String title;
 
@@ -27,7 +28,7 @@ public class TbItem {
 
     private Date updateTime;
 
-    public TbItem(Long id, Integer categoryId, String title, String subtitle, String mainImage, String subImage, BigDecimal price, Integer stock, String detail, Date createTime, Date updateTime) {
+    public TbItem(Long id, Long categoryId, String title, String subtitle, String mainImage, String subImage, BigDecimal price, Integer stock, String detail, Date createTime, Date updateTime) {
         this.id = id;
         this.categoryId = categoryId;
         this.title = title;
@@ -53,11 +54,11 @@ public class TbItem {
         this.id = id;
     }
 
-    public Integer getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 

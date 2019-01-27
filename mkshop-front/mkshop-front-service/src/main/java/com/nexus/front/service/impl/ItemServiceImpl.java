@@ -120,8 +120,13 @@ public class ItemServiceImpl implements ItemService {
         //开始组装
         resItem.setId(tbItem.getId());
         //组装分类ID
-        resItem.setCategoryId(tbItem.getCategoryId());
+        try{
+            resItem.setCategoryId(tbItem.getCategoryId());
+        }catch (NullPointerException e){
+            log.error(tbItem.getCategoryId().toString());
+        }
         //设置父类分类ID
+
         resItem.setParentCategoryId(tbCategoryMapper.selectParentId(tbItem.getCategoryId()));
         resItem.setTitle(tbItem.getTitle());
         resItem.setSubtitle(tbItem.getSubtitle());

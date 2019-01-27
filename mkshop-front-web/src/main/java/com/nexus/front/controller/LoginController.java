@@ -3,13 +3,11 @@ package com.nexus.front.controller;
 import com.nexus.common.model.ResponseCode;
 import com.nexus.common.model.ServerResponse;
 import com.nexus.front.service.MemberService;
+import com.nexus.manager.dto.RegisterMember;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -72,10 +70,9 @@ public class LoginController {
     @RequestMapping(value = "register_phone",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     @ApiOperation(httpMethod = "POST",value = "注册新用户-手机方式",
             produces = "application/json;charset=UTF-8",notes = "注册用户-手机方式")
-    public ServerResponse registerByPhone(HttpServletRequest request,
-                                          @RequestParam("register_token") String register_token){
+    public ServerResponse registerByPhone(@RequestBody RegisterMember registerMember){
         //todo 完善注册流程
-        return null;
+        return memberService.registerByPhone(registerMember);
     }
 
     @RequestMapping(value = "send_code",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")

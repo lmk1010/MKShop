@@ -1,5 +1,7 @@
 package com.nexus.manager.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +22,10 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 public class Item implements Serializable {
 
-    private Long id;
+    private long id;
 
     private long categoryId;
 
@@ -43,9 +46,9 @@ public class Item implements Serializable {
     private String detail;
 
     private String imageHost;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createTime;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date updateTime;
 
 }

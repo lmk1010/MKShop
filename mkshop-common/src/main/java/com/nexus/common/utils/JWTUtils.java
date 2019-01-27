@@ -23,7 +23,7 @@ public class JWTUtils {
      * 1.创建一个32-byte的密匙
      */
 
-    private static final byte[] secret = "thisismkshopbylmk".getBytes();
+    private static final byte[] secret = "thisismkshopbylmksecretkey".getBytes();
 
 
     //生成一个token

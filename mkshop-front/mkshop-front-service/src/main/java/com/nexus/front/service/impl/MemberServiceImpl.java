@@ -11,9 +11,11 @@ import com.nexus.common.utils.MessageUtil;
 import com.nexus.common.utils.RandomUtil;
 import com.nexus.front.service.MemberService;
 import com.nexus.manager.dto.MemberDto;
+import com.nexus.manager.dto.RegisterMember;
 import com.nexus.manager.mapper.TbMemberMapper;
 import com.nexus.manager.pojo.TbMember;
 import com.nimbusds.jose.JOSEException;
+import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,7 @@ import java.util.UUID;
 @Service("memberService")
 @Transactional
 @Slf4j
+@Log4j
 public class MemberServiceImpl  implements MemberService {
 
     @Autowired
@@ -79,6 +82,8 @@ public class MemberServiceImpl  implements MemberService {
 
         String token = "";
 
+        Map<String,String> res = new HashMap<>();
+
         if (username==null){
             return ServerResponse.createByErrorCode("参数错误", ResponseCode.ILLEGA_ARGUMENT.getCode());
         }
@@ -92,7 +97,13 @@ public class MemberServiceImpl  implements MemberService {
         }
         try{
             //利用JWT工具类创建token
-            token = JWTUtils.creatToken(this.ConvertMap(loginMember));
+            Map<String,Object> convert = this.ConvertMap(loginMember);
+            if (convert==null){
+                System.err.println("转换错误");
+                log.error("转换错误");
+            }
+            token = JWTUtils.creatToken(convert);
+            log.error("token:"+token);
             //缓存token入redis
             jedisOperater.set(Constant.TOKEN_PREFIX+ token, JSON.toJSONString(loginMember));
             //设置token过期时间
@@ -101,7 +112,9 @@ public class MemberServiceImpl  implements MemberService {
             e.printStackTrace();
         }
         //返回客户端token
-        return ServerResponse.createBySuccess(token, "登陆成功");
+        res.put("token", token);
+        log.error(token);
+        return ServerResponse.createBySuccess(res, "登陆成功");
         /*以前组装为memberdto 现在改为JWT Token
         //MemberDto memberDto = ConvertMember(loginMember);
         String token = UUID.randomUUID().toString();
@@ -150,9 +163,26 @@ public class MemberServiceImpl  implements MemberService {
     }
 
     @Override
-    public ServerResponse registerByPhone(String phonenumber) {
-
-        return null;
+    public ServerResponse registerByPhone(RegisterMember registerMember) {
+        if (registerMember==null){
+            return ServerResponse.createByErrorMsg("参数错误");
+        }
+        if (StringUtils.isBlank(registerMember.getRegisterToken())){
+            return ServerResponse.createByErrorMsg("Token无效!");
+        }
+        String registerToken = TokenCache.getKey(TokenCache.TOKEN_PREFIX);
+        if (registerToken==null){
+            return ServerResponse.createByErrorMsg("Token过期,请重新刷新页面");
+        }
+        if (!StringUtils.equals(registerToken,registerMember.getRegisterToken())){
+            return ServerResponse.createByErrorMsg("Token不符合");
+        }
+        TbMember tbMember = this.ConvertFromRegister(registerMember);
+        int insertStatus = tbMemberMapper.insert(tbMember);
+        if (insertStatus==0){
+            return ServerResponse.createByErrorMsg("用户信息增加失败");
+        }
+        return ServerResponse.createBySuccessMsg("用户增加成功");
     }
 
     @Override
@@ -201,6 +231,7 @@ public class MemberServiceImpl  implements MemberService {
             res.put(Constant.CODE_TAG,codeKey);
             return ServerResponse.createBySuccess(res, "发送成功");
         }
+
         return ServerResponse.createByErrorMsg("参数错误！");
     }
 
@@ -220,7 +251,7 @@ public class MemberServiceImpl  implements MemberService {
         //设置❤新的token 用于修改密码
         String forgetToken = UUID.randomUUID().toString();
         TokenCache.setKey(TokenCache.TOKEN_PREFIX, forgetToken);
-        returnMap.put("forgetToken", forgetToken);
+        returnMap.put("Token", forgetToken);
         return ServerResponse.createBySuccess(returnMap,"验证成功！");
     }
 
@@ -283,6 +314,31 @@ public class MemberServiceImpl  implements MemberService {
 
         return member;
 
+    }
+    /*
+     *功能描述
+     * @Author liumingkang
+     * @Description //TODO 注册页面的model转换为Tbmember
+     * @Date 2019-01-27
+     * @Param [registerMember]
+     * @Return com.nexus.manager.pojo.TbMember
+     */
+    private TbMember ConvertFromRegister(RegisterMember registerMember){
+
+        TbMember tbMember = new TbMember();
+
+        tbMember.setUsername(registerMember.getUsername());
+        //MD5加密
+        tbMember.setPassword(DigestUtils.md5DigestAsHex(registerMember.getPassword().getBytes()));
+        tbMember.setNickname(registerMember.getNickname());
+        tbMember.setEmail(registerMember.getEmail());
+        tbMember.setPhonenumber(registerMember.getPhonenumber());
+        tbMember.setSex(registerMember.getSex());
+        tbMember.setAddress(registerMember.getAddress());
+        tbMember.setDescription(registerMember.getDescription());
+        tbMember.setImgurl(registerMember.getImgurl());
+
+        return tbMember;
     }
 
 

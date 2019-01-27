@@ -2,6 +2,7 @@ package com.nexus.front.service;
 
 
 import com.nexus.common.model.ServerResponse;
+import com.nexus.manager.dto.RegisterMember;
 import com.nexus.manager.pojo.TbMember;
 
 public interface MemberService {
@@ -26,7 +27,7 @@ public interface MemberService {
     //退出登陆
     public ServerResponse logoutMK(String token);
     //注册--手机方式
-    public ServerResponse registerByPhone(String register_token);
+    public ServerResponse registerByPhone(RegisterMember registerMember);
     //前台忘记密码服务(验证手机号--->修改密码)
     //验证手机号发送短信,实现复用 注册和忘记密码
     public ServerResponse sendMessageCode(String phonenumber,Integer mode);

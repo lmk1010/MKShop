@@ -28,4 +28,5 @@
     <dubbo:service timeout="1200000" interface="com.nexus.front.service.CartService" ref="cartService"/>
     <dubbo:service timeout="1200000" interface="com.nexus.front.service.AddressService" ref="addressService"/>
     <dubbo:service timeout="1200000" interface="com.nexus.front.service.OrderService" ref="orderService"/>
+    <dubbo:service timeout="1200000" interface="com.nexus.front.service.ItemService" ref="itemService"/>
 </beans>
