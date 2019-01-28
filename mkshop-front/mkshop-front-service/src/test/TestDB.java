@@ -2,7 +2,6 @@ import com.nexus.common.utils.JWTUtils;
 import com.nexus.front.service.CartService;
 import com.nexus.manager.mapper.TbCartMapper;
 import com.nexus.manager.pojo.TbCart;
-import com.nimbusds.jose.JOSEException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +23,12 @@ import java.util.Map;
 public class TestDB {
 
     @Test
-    public void wewe() throws JOSEException {
+    public void wewe() {
 
         Map<String,Object> map = new HashMap<>();
 
         map.put("token", "hahaha");
 
-        String s = JWTUtils.creatToken(map);
 
-        System.err.println(s);
     }
 }

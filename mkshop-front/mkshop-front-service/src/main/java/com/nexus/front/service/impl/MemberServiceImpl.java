@@ -14,7 +14,6 @@ import com.nexus.manager.dto.MemberDto;
 import com.nexus.manager.dto.RegisterMember;
 import com.nexus.manager.mapper.TbMemberMapper;
 import com.nexus.manager.pojo.TbMember;
-import com.nimbusds.jose.JOSEException;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -80,10 +79,6 @@ public class MemberServiceImpl  implements MemberService {
     @Override
     public ServerResponse loginMK(String username, String password) {
 
-        String token = "";
-
-        Map<String,String> res = new HashMap<>();
-
         if (username==null){
             return ServerResponse.createByErrorCode("参数错误", ResponseCode.ILLEGA_ARGUMENT.getCode());
         }
@@ -95,28 +90,7 @@ public class MemberServiceImpl  implements MemberService {
         if (!loginMember.getPassword().equals(MD5Pass)){
             return ServerResponse.createByErrorMsg("密码错误");
         }
-        try{
-            //利用JWT工具类创建token
-            Map<String,Object> convert = this.ConvertMap(loginMember);
-            if (convert==null){
-                System.err.println("转换错误");
-                log.error("转换错误");
-            }
-            token = JWTUtils.creatToken(convert);
-            log.error("token:"+token);
-            //缓存token入redis
-            jedisOperater.set(Constant.TOKEN_PREFIX+ token, JSON.toJSONString(loginMember));
-            //设置token过期时间
-            jedisOperater.expire(Constant.TOKEN_PREFIX+token, Constant.TOKEN_EXPIRE);
-        }catch (JOSEException e){
-            e.printStackTrace();
-        }
-        //返回客户端token
-        res.put("token", token);
-        log.error(token);
-        return ServerResponse.createBySuccess(res, "登陆成功");
-        /*以前组装为memberdto 现在改为JWT Token
-        //MemberDto memberDto = ConvertMember(loginMember);
+        MemberDto memberDto = ConvertMember(loginMember);
         String token = UUID.randomUUID().toString();
         //设置token
         memberDto.setToken(token);
@@ -125,7 +99,7 @@ public class MemberServiceImpl  implements MemberService {
         //设置token过期时间
         jedisOperater.expire(Constant.TOKEN_PREFIX+token, Constant.TOKEN_EXPIRE);
         //返回给客户端token及用户信息
-        return ServerResponse.createBySuccess(memberDto, "登陆成功");*/
+        return ServerResponse.createBySuccess(memberDto, "登陆成功");
     }
 
     @Override
