@@ -1,6 +1,9 @@
 package com.nexus.manager.mapper;
 
 import com.nexus.manager.pojo.TbRolePerm;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TbRolePermMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +17,6 @@ public interface TbRolePermMapper {
     int updateByPrimaryKeySelective(TbRolePerm record);
 
     int updateByPrimaryKey(TbRolePerm record);
+
+    List<Long> selectPermIdByRoleId(@Param("roleIds")List<Long> roleIds);
 }

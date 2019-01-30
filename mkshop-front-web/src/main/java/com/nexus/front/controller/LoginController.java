@@ -2,6 +2,7 @@ package com.nexus.front.controller;
 
 import com.nexus.common.model.ResponseCode;
 import com.nexus.common.model.ServerResponse;
+import com.nexus.front.service.LoginService;
 import com.nexus.front.service.MemberService;
 import com.nexus.manager.dto.RegisterMember;
 import io.swagger.annotations.Api;
@@ -24,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     @Autowired
-    private MemberService memberService;
+    private LoginService loginService;
 
 
     @RequestMapping(value = "login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
@@ -36,7 +37,7 @@ public class LoginController {
         if (username==null||username.equals("")||username.isEmpty()){
             return ServerResponse.createByErrorCode("参数错误", ResponseCode.ILLEGA_ARGUMENT.getCode());
         }
-        ServerResponse serverResponse = memberService.loginMK(username, password);
+        ServerResponse serverResponse = loginService.loginMK(username, password);
 
         return serverResponse;
     }
@@ -47,7 +48,7 @@ public class LoginController {
     public ServerResponse refreshToken(HttpServletRequest request,
                                        @RequestParam("token") String token){
 
-        return memberService.refreshToken(token);
+        return loginService.refreshToken(token);
     }
 
     @RequestMapping(value = "check_token",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
@@ -56,7 +57,7 @@ public class LoginController {
     public ServerResponse checkToken(HttpServletRequest request,
                                      @RequestParam("token") String token){
 
-        return memberService.checkToken(token);
+        return loginService.checkToken(token);
     }
 
     @RequestMapping(value = "logout",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
@@ -64,7 +65,7 @@ public class LoginController {
             produces = "application/json;charset=UTF-8",notes = "退出登陆，销毁token")
     public ServerResponse logout(HttpServletRequest request,
                                  @RequestParam("token") String token){
-        return memberService.logoutMK(token);
+        return loginService.logoutMK(token);
     }
 
     @RequestMapping(value = "register_phone",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
@@ -72,7 +73,7 @@ public class LoginController {
             produces = "application/json;charset=UTF-8",notes = "注册用户-手机方式")
     public ServerResponse registerByPhone(@RequestBody RegisterMember registerMember){
         //todo 完善注册流程
-        return memberService.registerByPhone(registerMember);
+        return loginService.registerByPhone(registerMember);
     }
 
     @RequestMapping(value = "send_code",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
@@ -81,7 +82,7 @@ public class LoginController {
     public ServerResponse toVaildPhoneNumber(@RequestParam("phonenumber") String phonenumber,
                                              @RequestParam("s_mode") Integer s_mode){
         ServerResponse serverResponse;
-        serverResponse = memberService.sendMessageCode(phonenumber,s_mode);
+        serverResponse = loginService.sendMessageCode(phonenumber,s_mode);
         return serverResponse;
     }
 
@@ -90,7 +91,7 @@ public class LoginController {
             produces = "application/json;charset=UTF-8",notes = "用于忘记密码之前的用户输入的验证码")
     public ServerResponse toVaildCode(@RequestParam("Verify_token") String Verify_token,
                                       @RequestParam("Code") String code){
-        return memberService.checkCodeVaild(Verify_token, code);
+        return loginService.checkCodeVaild(Verify_token, code);
     }
 
 
@@ -100,7 +101,7 @@ public class LoginController {
     public ServerResponse toForgetPassword(@RequestParam("username") String username,
                                            @RequestParam("passwordNew") String passwordNew,
                                            @RequestParam("forgetToken") String forgetToken){
-        return memberService.forgetPass(username, passwordNew, forgetToken);
+        return loginService.forgetPass(username, passwordNew, forgetToken);
     }
 
 

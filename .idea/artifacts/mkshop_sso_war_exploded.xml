@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mkshop-sso:war exploded">
+    <output-path>$PROJECT_DIR$/mkshop-sso/target/mkshop-sso</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>mkshop-sso</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="mkshop-sso" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:1.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.oltu.oauth2:org.apache.oltu.oauth2.common:1.0.1" />
+          <element id="library" level="project" name="Maven: org.json:json:20180130" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.8.0-alpha2" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/mkshop-sso/target/mkshop-sso/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="mkshop-sso/web/Web" />
+    </root>
+  </artifact>
+</component>

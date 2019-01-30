@@ -26,5 +26,6 @@
     <!--需要暴露出来的服务 后期也可以使用注解-->
     <dubbo:service timeout="1200000" interface="com.nexus.manager.service.UserService" ref="userService"/>
     <dubbo:service interface="com.nexus.manager.service.DemoService" ref="demoService"/>
+    <dubbo:service interface="com.nexus.manager.service.AddressService" ref="addressService"/>
 
 </beans>

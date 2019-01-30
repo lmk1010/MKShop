@@ -13,6 +13,8 @@ public class Constant {
 
     public static Integer TOKEN_EXPIRE = 1800;
 
+    public static Integer SESSION_EXPIRE = 18000;
+
     public static String TOKEN_PREFIX = "Token_";
 
     public static String CODE_TAG = "Verify_token";
@@ -20,6 +22,10 @@ public class Constant {
     public static String SORTED_DESC =  "desc";
 
     public static String SORTED_ASC =  "asc";
+
+    public static String ROLES_KEY = "role_cache_yes";
+
+    public static String PERMISSION_KEY = "permission_cache_key";
 
     public enum SendSMSMode{
 

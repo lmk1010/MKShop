@@ -40,6 +40,8 @@
         <dubbo.version>2.6.0</dubbo.version>
         <zookeeper.version>3.4.6</zookeeper.version>
         <swaggar2.version>2.6.1</swaggar2.version>
+        <oauth.version>1.0.1</oauth.version>
+
     </properties>
 
     <dependencyManagement>
@@ -283,6 +285,27 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swaggar2.version}</version>
+            </dependency>
+            <!--apache oauth2-->
+            <dependency>
+                <groupId>org.apache.oltu.oauth2</groupId>
+                <artifactId>org.apache.oltu.oauth2.client</artifactId>
+                <version>${oauth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.oltu.oauth2</groupId>
+                <artifactId>org.apache.oltu.oauth2.common</artifactId>
+                <version>${oauth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.oltu.oauth2</groupId>
+                <artifactId>org.apache.oltu.oauth2.authzserver</artifactId>
+                <version>${oauth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.oltu.oauth2</groupId>
+                <artifactId>org.apache.oltu.oauth2.resourceserver</artifactId>
+                <version>${oauth.version}</version>
             </dependency>
 
         </dependencies>

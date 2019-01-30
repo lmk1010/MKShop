@@ -1,6 +1,10 @@
 package com.nexus.manager.mapper;
 
 import com.nexus.manager.pojo.TbPermission;
+import org.apache.ibatis.annotations.Param;
+
+import java.security.Permission;
+import java.util.List;
 
 public interface TbPermissionMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +18,6 @@ public interface TbPermissionMapper {
     int updateByPrimaryKeySelective(TbPermission record);
 
     int updateByPrimaryKey(TbPermission record);
+
+    List<TbPermission> selectPermByRoleIds(@Param("permIds") List<Long> permIds);
 }

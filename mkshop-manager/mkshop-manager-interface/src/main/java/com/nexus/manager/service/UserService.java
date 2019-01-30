@@ -6,6 +6,7 @@ import com.nexus.manager.pojo.TbUser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public interface UserService {
 
@@ -16,5 +17,9 @@ public interface UserService {
     public TbUser selectUserByName(String username);
 
     public Integer updateUser(TbUser tbUser);
+
+    public Set<String> findAllRoles(String username);
+
+    public Set<String> findAllPermissions(String username);
 
 }

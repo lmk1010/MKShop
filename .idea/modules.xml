@@ -16,6 +16,9 @@
       <module fileurl="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-service/mkshop-manager-service.iml" filepath="$PROJECT_DIR$/mkshop-manager/mkshop-manager-service/mkshop-manager-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/mkshop-manager-web/mkshop-manager-web.iml" filepath="$PROJECT_DIR$/mkshop-manager-web/mkshop-manager-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mkshop-parent/mkshop-parent.iml" filepath="$PROJECT_DIR$/mkshop-parent/mkshop-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mkshop-sso/mkshop-sso.iml" filepath="$PROJECT_DIR$/mkshop-sso/mkshop-sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mkshop-sso/mkshop-sso-interface/mkshop-sso-interface.iml" filepath="$PROJECT_DIR$/mkshop-sso/mkshop-sso-interface/mkshop-sso-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mkshop-sso/mkshop-sso-service/mkshop-sso-service.iml" filepath="$PROJECT_DIR$/mkshop-sso/mkshop-sso-service/mkshop-sso-service.iml" />
     </modules>
   </component>
 </project>

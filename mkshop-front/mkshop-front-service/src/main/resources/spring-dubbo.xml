@@ -24,6 +24,7 @@
     <!--使用dubbo协议 端口号为20800-->
     <dubbo:protocol host="192.168.50.36" name="dubbo"  port="20800"/>
     <!--需要暴露出来的服务 后期也可以使用注解-->
+    <dubbo:service timeout="1200000" interface="com.nexus.front.service.LoginService" ref="loginService"/>
     <dubbo:service timeout="1200000" interface="com.nexus.front.service.MemberService" ref="memberService"/>
     <dubbo:service timeout="1200000" interface="com.nexus.front.service.CartService" ref="cartService"/>
     <dubbo:service timeout="1200000" interface="com.nexus.front.service.AddressService" ref="addressService"/>

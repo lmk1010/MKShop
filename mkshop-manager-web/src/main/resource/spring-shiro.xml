@@ -15,25 +15,42 @@
 
      <!--shiro的数据源realm-->
      <bean id="myRealm" class="com.nexus.manager.shiro.MyRealm"/>
+
+     <!--SHA1PRNG 算法生成sessionid-->
+     <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.RandomSessionIdGenerator">
+     </bean>
+     <!--配置sessionDao中的信息 对于后端来说并发量太小 只需要用内存实现即可 不需要缓存-->
+     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO">
+          <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
+     </bean>
+     <!--使用shiro提供的默认sessionManager来实现-->
+     <!--可以设置session过期时间等等-->
+     <bean id="sessionManager" class="org.apache.shiro.session.mgt.DefaultSessionManager">
+          <property name="sessionDAO" ref="sessionDAO"/>
+          <property name="globalSessionTimeout" value="18000"/>
+     </bean>
      <!--shiro安全管理器-->
      <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
           <!--放置数据源Realm-->
           <property name="realm" ref="myRealm"/>
+          <property name="sessionManager" ref="sessionManager"/>
      </bean>
 
      <!--配置shiro的生命周期-->
      <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
      <bean id="shiroFilter" class="com.nexus.manager.shiro.MyShiroFilter">
           <property name="securityManager" ref="securityManager"/>
           <!--登陆页面地址-->
-          <property name="loginUrl" value="/"/>
+          <!--<property name="loginUrl" value="/"/>-->
           <!--登陆之后跳转的地址-->
-          <property name="successUrl" value="/"/>
+          <!--<property name="successUrl" value="/"/>-->
           <!--没通过登陆之后跳转地址-->
-          <property name="unauthorizedUrl" value=""/>
+          <!--<property name="unauthorizedUrl" value=""/>-->
           <!--定义filter-->
           <!--
           <property name="filters">
+
           </property>
           -->
           <!--过滤URL控制-->
@@ -43,6 +60,13 @@
                          /user/getdemo=anon
                     </value>
           </property>
+     </bean>
+
+     <!-- 开启Shiro的注解支持.  Only run after -->
+     <!-- the lifecycleBeanProcessor has run: -->
+     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+          <property name="securityManager" ref="securityManager"/>
      </bean>
 
 </beans>

@@ -19,6 +19,19 @@
     from tb_permission
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectPermByRoleIds" parameterType="java.util.List" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_permission
+    <where>
+      <if test="permIds!=null">
+        id in
+        <foreach collection="permIds" index="index" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_permission
     where id = #{id,jdbcType=BIGINT}

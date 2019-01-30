@@ -24,6 +24,12 @@
         <constructor-arg name="password" value="redislmk"/>
     </bean>
 
+    <!--封装jedis操作类-->
+    <bean id="jedisOperater" class="com.nexus.common.utils.JedisUtil">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+
+
 
 
 

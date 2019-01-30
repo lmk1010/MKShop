@@ -22,13 +22,11 @@ public class TbUser implements Serializable {
 
     private String description;
 
-    private Long roleId;
-
     private Date createtime;
 
     private Date updatetime;
 
-    public TbUser(Long id, String username, String password, String email, String phonenumber, String sex, String address, Integer status, String description, Long roleId, Date createtime, Date updatetime) {
+    public TbUser(Long id, String username, String password, String email, String phonenumber, String sex, String address, Integer status, String description, Date createtime, Date updatetime) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -38,7 +36,6 @@ public class TbUser implements Serializable {
         this.address = address;
         this.status = status;
         this.description = description;
-        this.roleId = roleId;
         this.createtime = createtime;
         this.updatetime = updatetime;
     }
@@ -117,14 +114,6 @@ public class TbUser implements Serializable {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
-    }
-
-    public Long getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
     }
 
     public Date getCreatetime() {

@@ -23,6 +23,16 @@
 
     <!--自动处理静态资源-->
     <mvc:default-servlet-handler/>
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/api/**"/>
+            <mvc:exclude-mapping path="/api/access/**"/>
+            <bean id="TokenInterceptor" class="com.nexus.front.interceptor.TokenInterceptor">
+
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!--配置试图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

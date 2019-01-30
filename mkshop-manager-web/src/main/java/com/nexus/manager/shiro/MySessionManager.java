@@ -20,6 +20,7 @@ import java.util.UUID;
  * @Author liumingkang
  * @Date 2019-01-14 10:04
  * @Version 1.0
+ * @status 已废弃
  **/
 public class MySessionManager extends DefaultWebSessionManager {
 

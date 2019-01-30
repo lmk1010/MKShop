@@ -43,6 +43,7 @@
     <file type="web" url="file://$PROJECT_DIR$/mkshop-front-web" />
     <file type="web" url="file://$PROJECT_DIR$/mkshop-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/mkshop-manager/mkshop-manager-service" />
+    <file type="web" url="file://$PROJECT_DIR$/mkshop-sso" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -54,6 +55,7 @@
         <option value="$PROJECT_DIR$/generator-map/pom.xml" />
         <option value="$PROJECT_DIR$/mkshop-common/pom.xml" />
         <option value="$PROJECT_DIR$/mkshop-front/pom.xml" />
+        <option value="$PROJECT_DIR$/mkshop-sso/pom.xml" />
       </list>
     </option>
   </component>

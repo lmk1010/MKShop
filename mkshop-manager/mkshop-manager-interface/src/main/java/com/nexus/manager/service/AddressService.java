@@ -16,10 +16,10 @@ import java.util.List;
 public interface AddressService {
 
     //返回用户收货地址
-    public List<TbAddress> getAllAddress(Integer userId);
+    public List<TbAddress> getAllAddress(long userId);
     //更新某用户收货地址
-    public Integer updateAddress(Integer addressId,Integer userId);
+    public Integer updateAddress(long addressId,long userId);
     //删除收货地址
-    public Integer deleteAddress(Integer addressId,Integer userId);
+    public Integer deleteAddress(long addressId,long userId);
 
 }
