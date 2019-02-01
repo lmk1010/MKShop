@@ -8,6 +8,8 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../../../Configure/respority/org/apache/shiro/shiro-all/1.4.0/shiro-all-1.4.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../Configure/respority/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../Configure/respority/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
