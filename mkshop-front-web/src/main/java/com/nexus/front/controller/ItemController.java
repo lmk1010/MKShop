@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(value = "商品",description = "商品的管理获取")
 @RequestMapping(value = "/api/item/")
-public class ItemController {
+public class    ItemController {
 
     @Autowired
     private ItemService itemService;

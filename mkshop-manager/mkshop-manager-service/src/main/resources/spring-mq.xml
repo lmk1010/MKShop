@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+                           http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+
+    <!--定义连接工厂类-->
+    <rabbit:connection-factory id="connectionFactory" host="192.168.1.103" port="5672"
+                               username="guest" password="guest" virtual-host="/" channel-cache-size="50"/>
+
+    <!--MQ的管理-->
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!--定义队列-->
+    <rabbit:queue id="itemQueue" auto-declare="true"/>
+
+    <!--定义交换器-->
+    <rabbit:fanout-exchange name="itemExchange" auto-declare="true">
+        <rabbit:bindings>
+            <rabbit:binding queue="itemQueue"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+
+    <!--rabbit 模版-->
+    <rabbit:template id="itemTemplate" connection-factory="connectionFactory" exchange="itemExchange"/>
+
+
+</beans>

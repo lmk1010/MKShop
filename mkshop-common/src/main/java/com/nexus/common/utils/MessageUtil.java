@@ -23,6 +23,7 @@ public class MessageUtil {
     public static final int DEF_READ_TIMEOUT = 30000;
     public static final String M_REGISTER_ID = "130356";
     public static final String M_FORGET_ID= "130151";
+    public static final String M_LOGIN_ID = "";
 
     public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
     private static String appKey = "9e7defd6a7613ced98d453b0ccb85b4e";

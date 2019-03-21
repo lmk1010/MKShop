@@ -18,11 +18,12 @@
     <!--redis资源池-->
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool" depends-on="jedisPoolConfig">
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
-        <constructor-arg name="host" value="192.168.50.39"/>
+        <constructor-arg name="host" value="192.168.1.102"/>
         <constructor-arg name="port" value="6379"/>
-        <constructor-arg name="timeout" value="2000"/>
+        <constructor-arg name="timeout" value="20000"/>
         <constructor-arg name="password" value="redislmk"/>
     </bean>
+
     <!--封装jedis操作类-->
     <bean id="jedisOperater" class="com.nexus.common.utils.JedisUtil">
         <property name="jedisPool" ref="jedisPool"/>

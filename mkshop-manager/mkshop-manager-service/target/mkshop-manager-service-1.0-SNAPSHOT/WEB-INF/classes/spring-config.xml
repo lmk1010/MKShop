@@ -16,6 +16,7 @@
     <import resource="spring-tx.xml"/>
 
     <import resource="spring-dubbo.xml"/>
+    <import resource="spring-mq.xml"/>
 
 
 </beans>

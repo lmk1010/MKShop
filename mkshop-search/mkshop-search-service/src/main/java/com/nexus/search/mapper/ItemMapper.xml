@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nexus.search.mapper.ItemMapper">
+
+
+    <select id="getItemList" resultType="com.nexus.manager.dto.search.ItemSearch" parameterType="java.lang.Long">
+
+        select
+        i.id,
+        i.title,
+        i.subtitle,
+        i.main_image,
+        i.price,
+        i.category_id,
+        c.name
+        from tb_item i
+        left join tb_category c
+        on i.category_id = c.id
+
+    </select>
+
+    <select id="getItemById" resultType="com.nexus.manager.dto.search.ItemSearch" parameterType="java.lang.Long">
+        select
+        i.id,
+        i.title,
+        i.subtitle,
+        i.main_image,
+        i.price,
+        i.category_id,
+        c.name
+        from tb_item i
+        left join tb_category c
+        on i.category_id = c.id
+        where i.id = #{itemId}
+    </select>
+
+
+</mapper>

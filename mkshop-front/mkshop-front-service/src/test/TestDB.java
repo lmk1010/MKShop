@@ -18,16 +18,12 @@ import java.util.Map;
  * @Date 2019-01-22 21:29
  * @Version 1.0
  **/
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:spring-config.xml")
 public class TestDB {
 
     @Test
     public void wewe() {
-
-        Map<String,Object> map = new HashMap<>();
-
-        map.put("token", "hahaha");
 
 
     }

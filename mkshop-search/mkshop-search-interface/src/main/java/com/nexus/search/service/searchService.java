@@ -1,9 +1,9 @@
-package com.nexus.search;
+package com.nexus.search.service;
 
 import com.nexus.common.model.ServerResponse;
 
 /**
- * @ClassName com.nexus.search.searchService
+ * @ClassName com.nexus.search.service.searchService
  * @Description TODO
  * @Author liumingkang
  * @Date 2019-02-17 21:40
@@ -15,4 +15,6 @@ public interface searchService {
     public ServerResponse search(String keyword,int pageNum,int pageSize,String desc,int priceH,int priceL);
 
 
+    //快速搜索
+    public ServerResponse QuickSearch(String key);
 }

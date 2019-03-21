@@ -17,6 +17,8 @@
         <module name="mkshop-manager-pojo" />
         <module name="mkshop-manager-service" />
         <module name="mkshop-manager-web" />
+        <module name="mkshop-search-interface" />
+        <module name="mkshop-search-service" />
         <module name="mkshop-sso-interface" />
         <module name="mkshop-sso-service" />
       </profile>
@@ -35,6 +37,9 @@
       <module name="mkshop-manager-service" target="1.7" />
       <module name="mkshop-manager-web" target="1.7" />
       <module name="mkshop-parent" target="1.5" />
+      <module name="mkshop-search" target="1.5" />
+      <module name="mkshop-search-interface" target="1.5" />
+      <module name="mkshop-search-service" target="6" />
       <module name="mkshop-sso" target="1.5" />
       <module name="mkshop-sso-interface" target="1.5" />
       <module name="mkshop-sso-service" target="1.7" />

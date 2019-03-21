@@ -19,10 +19,10 @@
     <!--提供服务的名称-->
     <dubbo:application name="MKShopService"/>
     <!--注册广播中心-->
-    <dubbo:registry protocol="zookeeper" address="192.168.50.10:2181"/>
+    <dubbo:registry protocol="zookeeper" address="192.168.1.107:2181"/>
 
     <!--使用dubbo协议 端口号为20800-->
-    <dubbo:protocol host="192.168.50.36" name="dubbo"  port="20800"/>
+    <dubbo:protocol name="dubbo"  port="20800"/>
     <!--需要暴露出来的服务 后期也可以使用注解-->
     <dubbo:service timeout="1200000" interface="com.nexus.manager.service.UserService" ref="userService"/>
     <dubbo:service interface="com.nexus.manager.service.DemoService" ref="demoService"/>

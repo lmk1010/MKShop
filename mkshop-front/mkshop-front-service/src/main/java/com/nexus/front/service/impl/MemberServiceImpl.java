@@ -100,6 +100,7 @@ public class MemberServiceImpl  implements MemberService {
         int updateStatus = tbMemberMapper.updateByPrimaryKeySelective(tbMember);
 
         return updateStatus;
+
     }
 
 

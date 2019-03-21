@@ -15,12 +15,15 @@
 
     <dubbo:application name="MKShopFrontWeb"/>
 
-    <dubbo:registry protocol="zookeeper" address="192.168.50.10:2181"/>
+    <!--<dubbo:registry protocol="zookeeper" address="192.168.50.10:2181"/>-->
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <!--<dubbo:protocol host="192.168.50.36"/>-->
 
-    <dubbo:protocol host="192.168.50.36"/>
+    <dubbo:protocol host="127.0.0.1"/>
 
     <dubbo:reference interface="com.nexus.manager.service.UserService" id="userService"/>
     <dubbo:reference interface="com.nexus.manager.service.DemoService" id="demoService"/>
+    <dubbo:reference interface="com.nexus.front.service.LoginService" id="loginService"/>
     <dubbo:reference interface="com.nexus.front.service.MemberService" id="memberService"/>
     <dubbo:reference interface="com.nexus.front.service.CartService" id="cartService"/>
     <dubbo:reference interface="com.nexus.front.service.AddressService" id="addressService"/>

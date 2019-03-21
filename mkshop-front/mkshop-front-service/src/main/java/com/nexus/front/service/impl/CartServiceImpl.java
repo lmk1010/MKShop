@@ -1,5 +1,6 @@
 package com.nexus.front.service.impl;
 
+import com.nexus.common.jedis.JedisOperater;
 import com.nexus.common.model.ServerResponse;
 import com.nexus.common.utils.BigDecimalUtil;
 import com.nexus.front.service.CartService;
@@ -35,6 +36,9 @@ public class CartServiceImpl implements CartService {
 
     @Autowired
     private TbItemMapper tbItemMapper;
+
+    @Autowired
+    private JedisOperater jedisOperater;
 
 
     /*

@@ -1,6 +1,7 @@
 package com.nexus.front.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.nexus.common.cache.TokenCache;
 import com.nexus.common.jedis.JedisOperater;
 import com.nexus.common.model.Constant;
@@ -14,11 +15,13 @@ import com.nexus.manager.dto.RegisterMember;
 import com.nexus.manager.mapper.TbMemberMapper;
 import com.nexus.manager.pojo.TbMember;
 import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
+import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +36,7 @@ import java.util.UUID;
  **/
 @Service("loginService")
 @Transactional
-@Log4j
+@Slf4j
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
@@ -43,30 +46,21 @@ public class LoginServiceImpl implements LoginService {
     private JedisOperater jedisOperater;
 
 
-    @Override
-    public ServerResponse loginMK(String username, String password) {
 
-        if (username==null){
-            return ServerResponse.createByErrorCode("参数错误", ResponseCode.ILLEGA_ARGUMENT.getCode());
+    @Override
+    public ServerResponse loginMK(String loginName, String identifyCode,int loginType) {
+
+        log.info("正在处理登陆请求");
+
+        if (loginType==Constant.ToLoginType.NORMAIL_LOGIN.getCode()){
+            log.info("用户使用用户名密码模式登陆用户名{}，密码{}",loginName,identifyCode);
+            return loginByUsername(loginName, identifyCode);
+        }else if(loginType==Constant.ToLoginType.PHONE_LOGIN.getCode()){
+            log.info("用户使用手机验证码模式登陆手机号{},验证码{}",loginName,identifyCode);
+            return loginByPhoneNumber(loginName, identifyCode);
         }
-        TbMember loginMember = tbMemberMapper.selectByUsername(username);
-        if (loginMember==null){
-            return ServerResponse.createByErrorMsg("无此用户");
-        }
-        String MD5Pass = DigestUtils.md5DigestAsHex(password.getBytes());
-        if (!loginMember.getPassword().equals(MD5Pass)){
-            return ServerResponse.createByErrorMsg("密码错误");
-        }
-        MemberDto memberDto = ConvertMember(loginMember);
-        String token = UUID.randomUUID().toString();
-        //设置token
-        memberDto.setToken(token);
-        //将token缓存到redis中
-        jedisOperater.set(Constant.TOKEN_PREFIX+token, JSON.toJSONString(memberDto));
-        //设置token过期时间
-        jedisOperater.expire(Constant.TOKEN_PREFIX+token, Constant.TOKEN_EXPIRE);
-        //返回给客户端token及用户信息
-        return ServerResponse.createBySuccess(memberDto, "登陆成功");
+        return ServerResponse.createByErrorMsg("登陆参数错误！");
+
     }
 
     @Override
@@ -171,6 +165,18 @@ public class LoginServiceImpl implements LoginService {
             //将key发给前端 前端带token来验证验证码的正确
             res.put(Constant.CODE_TAG,codeKey);
             return ServerResponse.createBySuccess(res, "发送成功");
+        }
+        if (mode.equals(Constant.SendSMSMode.LOGIN_MODE.getCode())){
+            String messageCode = RandomUtil.getRandom();
+            Integer sendStatus = MessageUtil.mobileQuery(phonenumber, messageCode, MessageUtil.M_LOGIN_ID);
+            if (sendStatus!=200){
+                return ServerResponse.createByErrorMsg("发送短信失败");
+            }
+            //缓存验证码
+            String codeKey = Constant.LOGIN_CODE_PREFIX+phonenumber;
+            //guavacache缓存时间设置为1分钟
+            TokenCache.setKey(codeKey, messageCode);
+            return ServerResponse.createBySuccess("发送成功");
         }
 
         return ServerResponse.createByErrorMsg("参数错误！");
@@ -297,5 +303,88 @@ public class LoginServiceImpl implements LoginService {
         }
         return 1;
     }
+
+    /**
+     *功能描述
+     * @Author liumingkang
+     * @Description //TODO 用户名密码登陆逻辑
+     * @Date 2019-03-21
+     * @Param [username, password]
+     * @Return com.nexus.common.model.ServerResponse
+     */
+    private ServerResponse loginByUsername(String username,String password){
+        if (username==null){
+            return ServerResponse.createByErrorCode("参数错误", ResponseCode.ILLEGA_ARGUMENT.getCode());
+        }
+
+        TbMember loginMember = tbMemberMapper.selectByUsername(username);
+        if (loginMember==null){
+            return ServerResponse.createByErrorMsg("无此用户");
+        }
+        String MD5Pass = DigestUtils.md5DigestAsHex(password.getBytes());
+        if (!loginMember.getPassword().equals(MD5Pass)){
+            return ServerResponse.createByErrorMsg("密码错误");
+        }
+
+        MemberDto memberDto = ConvertMember(loginMember);
+        String token = UUID.randomUUID().toString();
+        //设置token
+        memberDto.setToken(token);
+        try{
+            //将token缓存到redis中
+            jedisOperater.set(Constant.TOKEN_PREFIX+token, JSON.toJSONString(memberDto));
+            //设置token过期时间
+            jedisOperater.expire(Constant.TOKEN_PREFIX+token, Constant.TOKEN_EXPIRE);
+        }catch (JedisConnectionException e){
+            log.error("Redis服务器连接失败！！请检查连接");
+            e.printStackTrace();
+            return ServerResponse.createByErrorMsg("服务器连接失败！");
+        }
+        //返回给客户端token及用户信息
+        return ServerResponse.createBySuccess(memberDto, "登陆成功");
+    }
+
+    /**
+     *功能描述
+     * @Author liumingkang
+     * @Description //TODO 使用手机验证码方式登陆商城
+     * @Date 2019-03-21
+     * @Param [phoneNumber, smsCode]
+     * @Return com.nexus.common.model.ServerResponse
+     */
+    private ServerResponse loginByPhoneNumber(String phoneNumber,String smsCode){
+
+        TbMember tbMember = tbMemberMapper.selectByPhone(phoneNumber);
+
+        if (tbMember==null){
+            return ServerResponse.createByErrorMsg("参数错误");
+        }
+
+        String originCode = TokenCache.getKey(Constant.LOGIN_CODE_PREFIX + phoneNumber);
+
+        if (originCode==null || originCode.equals("")){
+            return ServerResponse.createByErrorMsg("并不存在此验证码，请重新发送验证码");
+        }
+
+        if (originCode != smsCode){
+            return ServerResponse.createByErrorMsg("验证码错误！");
+        }
+
+        MemberDto memberDto = this.ConvertMember(tbMember);
+        String loginToken = Constant.TOKEN_PREFIX+UUID.randomUUID().toString();
+        try{
+            jedisOperater.set(loginToken, JSONObject.toJSONString(memberDto));
+            jedisOperater.expire(loginToken, Constant.TOKEN_EXPIRE);
+
+        }catch (JedisConnectionException e){
+            return ServerResponse.createByErrorMsg("jedis服务器连接失败！");
+        }
+
+        memberDto.setToken(loginToken);
+
+        return ServerResponse.createBySuccess(memberDto,"登陆成功");
+
+    }
+
 
 }

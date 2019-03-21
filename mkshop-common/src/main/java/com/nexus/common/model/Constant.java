@@ -27,10 +27,19 @@ public class Constant {
 
     public static String PERMISSION_KEY = "permission_cache_key";
 
+    public static String CART_PREFIX = "Cart_";
+
+    public static String LOGIN_CODE_PREFIX = "sms_login_";
+
+    public static String FORGET_CODE_PREFIX = "sms_forget_";
+
+    public static String FOEGET_REGISTER_PREFIX = "sms_register_";
+
     public enum SendSMSMode{
 
         FORGET_MODE(101,"忘记"),
-        REGISTER_MODE(102,"注册");
+        REGISTER_MODE(102,"注册"),
+        LOGIN_MODE(103,"登陆");
 
         private String value;
         private int code;
@@ -228,6 +237,42 @@ public class Constant {
 
         public void setCode(int code) {
             this.code = code;
+        }
+    }
+
+
+    public enum ToLoginType{
+
+        NORMAIL_LOGIN(10003,"用户名密码登陆"),
+        PHONE_LOGIN(10004,"手机用户登陆"),
+        EMAIL_LOGIN(10005,"邮箱登陆"),
+        WECHAT_LOGIN(10006,"微信登陆"),
+        QQ_LOGIN(10007,"QQ登陆"),
+        OTHER_LOGIN(10008,"其他方式登陆");
+
+
+        private  int code;
+        private  String typeDescription;
+
+        ToLoginType(int code,String typeDescription){
+            this.code = code;
+            this.typeDescription = typeDescription;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+
+        public String getTypeDescription() {
+            return typeDescription;
+        }
+
+        public void setTypeDescription(String typeDescription) {
+            this.typeDescription = typeDescription;
         }
     }
 

@@ -29,6 +29,7 @@
           <property name="sessionDAO" ref="sessionDAO"/>
           <property name="globalSessionTimeout" value="18000"/>
      </bean>
+
      <!--shiro安全管理器-->
      <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
           <!--放置数据源Realm-->
